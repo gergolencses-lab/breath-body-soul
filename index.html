@@ -56,7 +56,7 @@
     .founder-row   { grid-template-columns:5fr 7fr; gap:56px; }
     .founder-row.rev .f-photo { order:2; }
     .articles-grid { grid-template-columns:repeat(3,1fr); gap:28px; }
-    .hero-logo     { width:400px; }
+    .hero-logo     { width:300px; }
   }
 
   .cta-pill { display:block; width:100%; max-width:440px; padding:18px 24px; background:#1a2e20; border-radius:100px; font-family:'DM Sans',sans-serif; font-size:16px; color:#fff; text-decoration:none; text-align:center; letter-spacing:.03em; transition:background .25s, transform .25s; }
@@ -68,7 +68,7 @@
   .breath-ring { animation:br2 9s ease-in-out infinite; }
   .scroll-cue { animation:scrollDrop 2.4s ease-in-out infinite; }
 
-  .hero-logo { width:min(82vw,300px); height:auto; display:block; margin:0 auto 18px; }
+  .hero-logo { width:min(66vw,238px); height:auto; display:block; margin:0 auto 16px; }
   .metaphor { scroll-snap-align:center; }
   .metaphor-poster, .metaphor-video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
   .metaphor-video { z-index:0; }
@@ -87,19 +87,19 @@
 <body>
 
 <!-- ============ HERO ============ -->
-<section style="min-height:100svh;background:#f5f1eb;display:flex;flex-direction:column;overflow:hidden;">
-  <div style="position:relative;height:58vh;min-height:300px;overflow:hidden;flex-shrink:0;">
+<section class="hero" style="min-height:100svh;background:#f5f1eb;display:flex;flex-direction:column;">
+  <div class="hero-photo" style="position:relative;height:58vh;min-height:300px;overflow:hidden;flex-shrink:0;">
     <img src="assets/hero.jpg" alt="Nő a szabadban, csukott szemmel, mélyet lélegezve" style="width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;">
     <div style="position:absolute;bottom:0;left:0;right:0;height:46%;background:linear-gradient(to bottom,transparent,#f5f1eb);pointer-events:none;"></div>
   </div>
 
-  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:0 28px 40px;text-align:center;">
+  <div class="hero-body" style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px 28px 40px;text-align:center;">
     <div style="width:100%;max-width:480px;">
       <img src="assets/logo.png" alt="Breath, Body &amp; Soul" class="hero-logo">
-      <h1 class="serif" style="font-size:clamp(36px,8.5vw,56px);font-weight:400;color:#1a2e20;line-height:1.08;margin-bottom:16px;">A tested tudja,<br><em style="font-style:italic;">amit az elmédnek<br>még nem mondtál el</em></h1>
+      <h1 class="serif" style="font-size:clamp(22px,5.6vw,44px);font-weight:400;color:#1a2e20;line-height:1.22;margin-bottom:14px;">A tested tudja,<br><em style="font-style:italic;">amit az elmédnek még nem mondtál el</em></h1>
       <p style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:300;color:rgba(26,46,32,.56);line-height:1.7;">Integrált terápiás csoportprogram légzéssel, testmunkával, pszichodrámával és transzgenerációs munkával.</p>
     </div>
-    <a href="#program" class="cta-pill" style="margin-top:30px;">Érdekel →</a>
+    <a href="#program" class="cta-pill" style="margin-top:32px;">Érdekel →</a>
   </div>
 </section>
 
