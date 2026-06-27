@@ -58,6 +58,7 @@
     .founder-row.rev .f-photo { order:2; }
     .articles-grid { grid-template-columns:repeat(3,1fr); gap:28px; }
     .hero-logo     { width:300px; }
+    .parallax      { height:64vh; }
   }
 
   .cta-pill { display:block; width:100%; max-width:440px; padding:18px 24px; background:#1a2e20; border-radius:100px; font-family:'DM Sans',sans-serif; font-size:16px; color:#fff; text-decoration:none; text-align:center; letter-spacing:.03em; transition:background .25s, transform .25s; }
@@ -73,6 +74,8 @@
   .metaphor { scroll-snap-align:center; }
   .metaphor-poster, .metaphor-video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
   .metaphor-video { z-index:0; }
+  .parallax { position:relative; height:56vh; min-height:300px; overflow:hidden; background:#d8cdbb; }
+  .parallax-inner { position:absolute; top:-20%; left:0; width:100%; height:140%; background-size:cover; background-position:center 40%; will-change:transform; }
 
   input::placeholder { color:rgba(255,255,255,.3); }
   input:focus { outline:none; border-color:rgba(76,215,122,.5) !important; }
@@ -82,6 +85,7 @@
     .reveal{ opacity:1 !important; transform:none !important; transition:none !important; }
     html{ scroll-behavior:auto; scroll-snap-type:none; }
     .metaphor-video{ display:none; }
+    .parallax-inner{ top:0; height:100%; transform:none !important; }
   }
 </style>
 </head>
@@ -375,6 +379,12 @@
   </div>
 </section>
 
+<!-- ============ PARALLAX KÉP-SÁV ============ -->
+<section class="parallax" aria-label="Légzőgyakorlat">
+  <div class="parallax-inner" style="background-image:url('assets/breath-band.jpg');"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(20,16,10,.06),transparent 28%,transparent 70%,rgba(10,20,16,.5));pointer-events:none;"></div>
+</section>
+
 <!-- ============ AZ APPLIKÁCIÓ ============ -->
 <section style="background:#0a1410;padding:100px 0;text-align:center;">
   <div class="ctr">
@@ -481,6 +491,31 @@
       document.getElementById('apply-wrap').style.display = 'none';
       document.getElementById('apply-success').style.display = 'inline-flex';
     });
+  })();
+
+  // Parallax image bands — image scrolls slower than the page (off for reduced motion)
+  (function(){
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var bands = document.querySelectorAll('.parallax');
+    if(!bands.length) return;
+    var ticking = false;
+    function update(){
+      var vh = window.innerHeight;
+      bands.forEach(function(sec){
+        var r = sec.getBoundingClientRect();
+        if(r.bottom < -50 || r.top > vh + 50) return;
+        var inner = sec.querySelector('.parallax-inner');
+        if(!inner) return;
+        var prog = (r.top + r.height/2 - vh/2) / (vh/2 + r.height/2);
+        var shift = -prog * 0.16 * r.height;
+        inner.style.transform = 'translate3d(0,' + shift.toFixed(1) + 'px,0)';
+      });
+      ticking = false;
+    }
+    function onScroll(){ if(!ticking){ ticking = true; requestAnimationFrame(update); } }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    window.addEventListener('resize', onScroll, {passive:true});
+    update();
   })();
 </script>
 </body>
