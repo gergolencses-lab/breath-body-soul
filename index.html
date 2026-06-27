@@ -1,19 +1,20 @@
 <!DOCTYPE html>
-<html lang="hu">
+<html lang="hu" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Breath Body and Soul — Integrált terápiás csoportprogram</title>
 <meta name="description" content="Integrált terápiás csoportprogram légzéssel, testmunkával, pszichodrámával és transzgenerációs munkával. A tested tudja, amit az elmédnek még nem mondtál el.">
 <meta name="robots" content="noindex, nofollow">
-<script>/* színtéma választó: index.html?theme=light | sun (alap: eredeti) */(function(){try{var t=new URLSearchParams(location.search).get('theme');if(t==='light'||t==='sun')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<script>/* élő alap: B natúr (<html data-theme="light">). ?theme=orig → A eredeti · ?theme=sun → C napsütés */(function(){try{var t=new URLSearchParams(location.search).get('theme'),h=document.documentElement;if(t==='orig')h.removeAttribute('data-theme');else if(t==='sun')h.setAttribute('data-theme','sun');else if(t==='light')h.setAttribute('data-theme','light');}catch(e){}})();</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-  /* ============ TÉMA-VÁLTOZÓK — A: eredeti (alapértelmezett) ============ */
+  /* ===== TÉMA-VÁLTOZÓK · ÉLŐ ALAP = B natúr (a <html data-theme="light"> miatt) ===== */
+  /* :root = A eredeti (fallback + ?theme=orig előnézet) */
   :root{
     --cream:#f5f1eb; --cream-rgb:245,241,235; --cream2:#faf9f6;
     --dark:#0a1410; --darker:#07100c;
