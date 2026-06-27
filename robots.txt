@@ -1,0 +1,5 @@
+# Pre-launch: az oldal még nem nyilvános keresőknek.
+# Élesítéskor töröld ezt a fájlt (vagy engedélyezd a crawl-t), és vedd ki a
+# <meta name="robots" content="noindex"> sort az index.html-ből.
+User-agent: *
+Disallow: /
