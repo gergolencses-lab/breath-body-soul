@@ -13,7 +13,7 @@
 
 <style>
   *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-  html { scroll-behavior:smooth; }
+  html { scroll-behavior:smooth; scroll-snap-type:y proximity; }
   body { background:#0a1410; font-family:'DM Sans',sans-serif; overflow-x:hidden; -webkit-font-smoothing:antialiased; }
   button { background:none; border:none; padding:0; font-family:inherit; cursor:pointer; }
   a { color:inherit; }
@@ -56,6 +56,7 @@
     .founder-row   { grid-template-columns:5fr 7fr; gap:56px; }
     .founder-row.rev .f-photo { order:2; }
     .articles-grid { grid-template-columns:repeat(3,1fr); gap:28px; }
+    .hero-logo     { width:400px; }
   }
 
   .cta-pill { display:block; width:100%; max-width:440px; padding:18px 24px; background:#1a2e20; border-radius:100px; font-family:'DM Sans',sans-serif; font-size:16px; color:#fff; text-decoration:none; text-align:center; letter-spacing:.03em; transition:background .25s, transform .25s; }
@@ -67,13 +68,19 @@
   .breath-ring { animation:br2 9s ease-in-out infinite; }
   .scroll-cue { animation:scrollDrop 2.4s ease-in-out infinite; }
 
+  .hero-logo { width:min(82vw,300px); height:auto; display:block; margin:0 auto 18px; }
+  .metaphor { scroll-snap-align:center; }
+  .metaphor-poster, .metaphor-video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .metaphor-video { z-index:0; }
+
   input::placeholder { color:rgba(255,255,255,.3); }
   input:focus { outline:none; border-color:rgba(76,215,122,.5) !important; }
 
   @media (prefers-reduced-motion: reduce){
     *{ animation:none !important; }
     .reveal{ opacity:1 !important; transform:none !important; transition:none !important; }
-    html{ scroll-behavior:auto; }
+    html{ scroll-behavior:auto; scroll-snap-type:none; }
+    .metaphor-video{ display:none; }
   }
 </style>
 </head>
@@ -88,7 +95,7 @@
 
   <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:0 28px 40px;text-align:center;">
     <div style="width:100%;max-width:480px;">
-      <p style="font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(26,46,32,.42);margin-bottom:16px;">Breath · Body · Soul</p>
+      <img src="assets/logo.png" alt="Breath, Body &amp; Soul" class="hero-logo">
       <h1 class="serif" style="font-size:clamp(36px,8.5vw,56px);font-weight:400;color:#1a2e20;line-height:1.08;margin-bottom:16px;">A tested tudja,<br><em style="font-style:italic;">amit az elmédnek<br>még nem mondtál el</em></h1>
       <p style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:300;color:rgba(26,46,32,.56);line-height:1.7;">Integrált terápiás csoportprogram légzéssel, testmunkával, pszichodrámával és transzgenerációs munkával.</p>
     </div>
@@ -99,10 +106,6 @@
 <!-- ============ AZ ÍGÉRET + A MÓDSZER ============ -->
 <section style="background:#f5f1eb;padding:96px 0;">
   <div class="ctr">
-    <div style="max-width:720px;margin:0 auto 76px;text-align:center;" class="reveal">
-      <p class="serif" style="font-size:clamp(32px,6vw,56px);font-weight:300;font-style:italic;color:#1a2e20;line-height:1.2;margin-bottom:28px;">„Nem a fejed dönti el.<br>A tested tudja."</p>
-      <div style="width:36px;height:1px;background:#4cd77a;margin:0 auto;"></div>
-    </div>
     <div class="intro-grid">
       <div class="reveal d1">
         <p class="eyebrow">Az ígéret</p>
@@ -197,8 +200,11 @@
 </section>
 
 <!-- ============ METAFORA (folyó) ============ -->
-<section style="position:relative;min-height:86vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;background:#0a1410;">
-  <img src="assets/river.jpg" alt="Türkiz folyó sziklák között, erdős völgyben" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;">
+<section class="metaphor" style="position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;background:#0a1410;">
+  <img class="metaphor-poster" src="assets/metafora-poster.jpg" alt="Türkiz folyó sziklák között, erdős völgyben">
+  <video class="metaphor-video" autoplay muted loop playsinline preload="auto">
+    <source src="assets/metafora.mp4" type="video/mp4">
+  </video>
   <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,16,12,.62) 0%,rgba(8,16,12,.34) 38%,rgba(8,16,12,.72) 100%);"></div>
   <div class="ctr reveal" style="position:relative;z-index:1;padding-top:80px;padding-bottom:80px;">
     <blockquote class="serif" style="font-size:clamp(24px,4.4vw,44px);font-weight:300;font-style:italic;color:#f3efe7;line-height:1.4;max-width:840px;margin:0 auto;text-shadow:0 2px 24px rgba(0,0,0,.4);">„A Breath Body Soul olyan, mint egy folyó. A légzés az áramlás ereje. A test a meder. A pszichodráma az a pillanat, amikor a víz sziklába ütközik és irányt vált. A családállítás pedig a forrás és a torkolat is egyszerre."</blockquote>
