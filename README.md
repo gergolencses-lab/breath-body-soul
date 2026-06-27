@@ -1,4 +1,4 @@
-# Breath Body Soul
+# Breath Body and Soul
 
 Integrált terápiás csoportprogram weboldala — **légzés · testmunka · pszichodráma · családállítás**.
 Alapítók: Generál Péter & Fáy Viktória.
