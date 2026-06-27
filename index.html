@@ -6,15 +6,43 @@
 <title>Breath Body and Soul — Integrált terápiás csoportprogram</title>
 <meta name="description" content="Integrált terápiás csoportprogram légzéssel, testmunkával, pszichodrámával és transzgenerációs munkával. A tested tudja, amit az elmédnek még nem mondtál el.">
 <meta name="robots" content="noindex, nofollow">
+<script>/* színtéma választó: index.html?theme=light | sun (alap: eredeti) */(function(){try{var t=new URLSearchParams(location.search).get('theme');if(t==='light'||t==='sun')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
+  /* ============ TÉMA-VÁLTOZÓK — A: eredeti (alapértelmezett) ============ */
+  :root{
+    --cream:#f5f1eb; --cream-rgb:245,241,235; --cream2:#faf9f6;
+    --dark:#0a1410; --darker:#07100c;
+    --ink:#1a2e20; --ink-rgb:26,46,32;
+    --deep:#2b6a48; --deep-rgb:43,106,72;
+    --band:#d8cdbb; --ph1:#1b3223; --ph2:#152b1d;
+    --accent:#4cd77a; --accent-rgb:76,215,122;
+  }
+  /* ---- B: világos / natúr (eucalyptus, meleg papír) ---- */
+  html[data-theme="light"]{
+    --cream:#f1ece2; --cream-rgb:241,236,226; --cream2:#f8f4ec;
+    --dark:#2c3a31; --darker:#243029;
+    --ink:#33433a; --ink-rgb:51,67,58;
+    --deep:#5d7d5a; --deep-rgb:93,125,90;
+    --band:#cfc4b2; --ph1:#2f3d33; --ph2:#27342b;
+    --accent:#8aa97a; --accent-rgb:138,169,122;
+  }
+  /* ---- C: napsütéses / nyári narancs ---- */
+  html[data-theme="sun"]{
+    --cream:#fdf2e4; --cream-rgb:253,242,228; --cream2:#fff8ef;
+    --dark:#34211a; --darker:#291a14;
+    --ink:#523524; --ink-rgb:82,53,36;
+    --deep:#c26a2c; --deep-rgb:194,106,44;
+    --band:#e7cba6; --ph1:#3a271c; --ph2:#311f16;
+    --accent:#f0954a; --accent-rgb:240,149,74;
+  }
   *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
   html { scroll-behavior:smooth; scroll-snap-type:y proximity; }
-  body { background:#0a1410; font-family:'DM Sans',sans-serif; overflow-x:hidden; -webkit-font-smoothing:antialiased; }
+  body { background:var(--dark); font-family:'DM Sans',sans-serif; overflow-x:hidden; -webkit-font-smoothing:antialiased; }
   button { background:none; border:none; padding:0; font-family:inherit; cursor:pointer; }
   a { color:inherit; }
 
@@ -30,10 +58,10 @@
   /* ---- layout helpers ---- */
   .ctr { width:100%; max-width:1100px; margin:0 auto; padding:0 24px; }
   .glass { background:rgba(255,255,255,.055); border:1px solid rgba(255,255,255,.1); border-radius:20px; backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px); }
-  .eyebrow { font-family:'DM Sans',sans-serif; font-size:10px; letter-spacing:.25em; text-transform:uppercase; color:#2b6a48; font-weight:500; margin-bottom:14px; }
-  .eyebrow-glow { color:#4cd77a; }
+  .eyebrow { font-family:'DM Sans',sans-serif; font-size:10px; letter-spacing:.25em; text-transform:uppercase; color:var(--deep); font-weight:500; margin-bottom:14px; }
+  .eyebrow-glow { color:var(--accent); }
   .serif { font-family:'Cormorant Garamond',serif; }
-  .layer-icon { width:46px; height:46px; border-radius:12px; background:rgba(76,215,122,.14); border:1px solid rgba(76,215,122,.28); display:flex; align-items:center; justify-content:center; margin-bottom:26px; }
+  .layer-icon { width:46px; height:46px; border-radius:12px; background:rgba(var(--accent-rgb),.14); border:1px solid rgba(var(--accent-rgb),.28); display:flex; align-items:center; justify-content:center; margin-bottom:26px; }
 
   .intro-grid   { display:grid; grid-template-columns:1fr; gap:44px; }
   .layers-grid  { display:grid; grid-template-columns:1fr; gap:20px; }
@@ -61,11 +89,11 @@
     .parallax      { height:64vh; }
   }
 
-  .cta-pill { display:block; width:100%; max-width:440px; padding:18px 24px; background:#1a2e20; border-radius:100px; font-family:'DM Sans',sans-serif; font-size:16px; color:#fff; text-decoration:none; text-align:center; letter-spacing:.03em; transition:background .25s, transform .25s; }
+  .cta-pill { display:block; width:100%; max-width:440px; padding:18px 24px; background:var(--ink); border-radius:100px; font-family:'DM Sans',sans-serif; font-size:16px; color:#fff; text-decoration:none; text-align:center; letter-spacing:.03em; transition:background .25s, transform .25s; }
   .cta-pill:hover { background:#24412e; transform:translateY(-2px); }
-  .cta-green { display:inline-block; padding:16px 40px; background:rgba(76,215,122,.13); border:1px solid rgba(76,215,122,.44); border-radius:100px; font-family:'DM Sans',sans-serif; font-size:15px; color:#4cd77a; text-decoration:none; letter-spacing:.04em; transition:background .25s, border-color .25s; }
-  .cta-green:hover { background:rgba(76,215,122,.24); border-color:rgba(76,215,122,.7); }
-  .tag { padding:6px 14px; border-radius:100px; border:1px solid rgba(76,215,122,.24); font-family:'DM Sans',sans-serif; font-size:12px; color:rgba(76,215,122,.72); }
+  .cta-green { display:inline-block; padding:16px 40px; background:rgba(var(--accent-rgb),.13); border:1px solid rgba(var(--accent-rgb),.44); border-radius:100px; font-family:'DM Sans',sans-serif; font-size:15px; color:var(--accent); text-decoration:none; letter-spacing:.04em; transition:background .25s, border-color .25s; }
+  .cta-green:hover { background:rgba(var(--accent-rgb),.24); border-color:rgba(var(--accent-rgb),.7); }
+  .tag { padding:6px 14px; border-radius:100px; border:1px solid rgba(var(--accent-rgb),.24); font-family:'DM Sans',sans-serif; font-size:12px; color:rgba(var(--accent-rgb),.72); }
 
   .breath-ring { animation:br2 9s ease-in-out infinite; }
   .scroll-cue { animation:scrollDrop 2.4s ease-in-out infinite; }
@@ -74,11 +102,11 @@
   .metaphor { scroll-snap-align:center; }
   .metaphor-poster, .metaphor-video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
   .metaphor-video { z-index:0; }
-  .parallax { position:relative; height:56vh; min-height:300px; overflow:hidden; background:#d8cdbb; }
+  .parallax { position:relative; height:56vh; min-height:300px; overflow:hidden; background:var(--band); }
   .parallax-inner { position:absolute; top:-20%; left:0; width:100%; height:140%; background-size:cover; background-position:center 40%; will-change:transform; }
 
   input::placeholder { color:rgba(255,255,255,.3); }
-  input:focus { outline:none; border-color:rgba(76,215,122,.5) !important; }
+  input:focus { outline:none; border-color:rgba(var(--accent-rgb),.5) !important; }
 
   @media (prefers-reduced-motion: reduce){
     *{ animation:none !important; }
@@ -92,43 +120,43 @@
 <body>
 
 <!-- ============ HERO ============ -->
-<section class="hero" style="min-height:100svh;background:#f5f1eb;display:flex;flex-direction:column;">
+<section class="hero" style="min-height:100svh;background:var(--cream);display:flex;flex-direction:column;">
   <div class="hero-photo" style="position:relative;height:58vh;min-height:300px;overflow:hidden;flex-shrink:0;">
     <img src="assets/hero.jpg" alt="Nő a szabadban, csukott szemmel, mélyet lélegezve" style="width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;">
-    <div style="position:absolute;bottom:0;left:0;right:0;height:46%;background:linear-gradient(to bottom,transparent,#f5f1eb);pointer-events:none;"></div>
+    <div style="position:absolute;bottom:0;left:0;right:0;height:46%;background:linear-gradient(to bottom,transparent,var(--cream));pointer-events:none;"></div>
   </div>
 
   <div class="hero-body" style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px 28px 40px;text-align:center;">
     <div style="width:100%;max-width:480px;">
       <img src="assets/logo.png" alt="Breath Body and Soul" class="hero-logo">
-      <p style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:300;color:rgba(26,46,32,.56);line-height:1.7;margin-top:8px;">Integrált terápiás csoportprogram légzéssel, testmunkával, pszichodrámával és transzgenerációs munkával.</p>
+      <p style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:300;color:rgba(var(--ink-rgb),.56);line-height:1.7;margin-top:8px;">Integrált terápiás csoportprogram légzéssel, testmunkával, pszichodrámával és transzgenerációs munkával.</p>
     </div>
     <a href="#program" class="cta-pill" style="margin-top:32px;">Érdekel →</a>
   </div>
 </section>
 
 <!-- ============ STATEMENT + AZ ÍGÉRET + A MÓDSZER ============ -->
-<section style="background:#f5f1eb;padding:92px 0 96px;">
+<section style="background:var(--cream);padding:92px 0 96px;">
   <div class="ctr">
     <div class="reveal" style="max-width:800px;margin:0 auto 78px;text-align:center;">
-      <h2 class="serif" style="font-size:clamp(22px,5.4vw,48px);font-weight:300;color:#1a2e20;line-height:1.3;">A tested tudja, amit az elmédnek<br><em style="font-style:italic;">még nem mondtál el</em></h2>
-      <div style="width:40px;height:1px;background:#2b6a48;margin:30px auto 0;"></div>
+      <h2 class="serif" style="font-size:clamp(22px,5.4vw,48px);font-weight:300;color:var(--ink);line-height:1.3;">A tested tudja, amit az elmédnek<br><em style="font-style:italic;">még nem mondtál el</em></h2>
+      <div style="width:40px;height:1px;background:var(--deep);margin:30px auto 0;"></div>
     </div>
     <div class="intro-grid">
       <div class="reveal d1">
         <p class="eyebrow">Az ígéret</p>
-        <p class="serif" style="font-size:clamp(19px,2.6vw,23px);color:#1a2e20;line-height:1.7;">Vannak dolgok, amiket nem lehet megbeszélni — mert a szavak nem érnek el oda, ahol ezek élnek. A félelem a mellkasban. A gyász, ami sosem jött ki. A kapcsolati minta, amit generációkon át hordozunk anélkül, hogy tudnánk, honnan jött. A szeretet, ami összeköt. A Breath Body and Soul azért jött létre, hogy ezekhez a helyekhez el lehessen jutni.</p>
+        <p class="serif" style="font-size:clamp(19px,2.6vw,23px);color:var(--ink);line-height:1.7;">Vannak dolgok, amiket nem lehet megbeszélni — mert a szavak nem érnek el oda, ahol ezek élnek. A félelem a mellkasban. A gyász, ami sosem jött ki. A kapcsolati minta, amit generációkon át hordozunk anélkül, hogy tudnánk, honnan jött. A szeretet, ami összeköt. A Breath Body and Soul azért jött létre, hogy ezekhez a helyekhez el lehessen jutni.</p>
       </div>
       <div class="reveal d2">
         <p class="eyebrow">A módszer</p>
-        <p class="serif" style="font-size:clamp(19px,2.6vw,23px);color:#1a2e20;line-height:1.7;">Évek alatt sok önismereti módszertant sajátítottunk el — és ezek ötvözésével, egymásra építésével alakítottuk ki ezt a megközelítést. Négy réteg, amely külön-külön is hat, együtt viszont megsokszorozza, amit önmagában tenne.</p>
+        <p class="serif" style="font-size:clamp(19px,2.6vw,23px);color:var(--ink);line-height:1.7;">Évek alatt sok önismereti módszertant sajátítottunk el — és ezek ötvözésével, egymásra építésével alakítottuk ki ezt a megközelítést. Négy réteg, amely külön-külön is hat, együtt viszont megsokszorozza, amit önmagában tenne.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ============ A NÉGY RÉTEG ============ -->
-<section style="background:#0a1410;padding:100px 0;">
+<section style="background:var(--dark);padding:100px 0;">
   <div class="ctr">
     <div style="margin-bottom:54px;" class="reveal">
       <p class="eyebrow eyebrow-glow">A módszer</p>
@@ -140,16 +168,16 @@
       <div class="glass reveal d1" style="padding:38px 32px;">
         <div class="layer-icon">
           <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-            <circle cx="11" cy="11" r="8.5" stroke="rgba(76,215,122,0.88)" stroke-width="1.5"/>
-            <circle cx="11" cy="11" r="4.5" stroke="rgba(76,215,122,0.88)" stroke-width="1.5"/>
-            <circle cx="11" cy="11" r="1.5" fill="rgba(76,215,122,0.88)"/>
+            <circle cx="11" cy="11" r="8.5" stroke="rgba(var(--accent-rgb),0.88)" stroke-width="1.5"/>
+            <circle cx="11" cy="11" r="4.5" stroke="rgba(var(--accent-rgb),0.88)" stroke-width="1.5"/>
+            <circle cx="11" cy="11" r="1.5" fill="rgba(var(--accent-rgb),0.88)"/>
           </svg>
         </div>
         <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:10px;">
-          <span class="serif" style="font-size:15px;color:rgba(76,215,122,.55);letter-spacing:.08em;">01</span>
+          <span class="serif" style="font-size:15px;color:rgba(var(--accent-rgb),.55);letter-spacing:.08em;">01</span>
           <h3 class="serif" style="font-size:29px;font-weight:400;color:#fff;">Légzés</h3>
         </div>
-        <p class="serif" style="font-style:italic;font-size:17px;color:rgba(76,215,122,.82);line-height:1.5;margin-bottom:16px;">Mi történik az idegrendszeremben?</p>
+        <p class="serif" style="font-style:italic;font-size:17px;color:rgba(var(--accent-rgb),.82);line-height:1.5;margin-bottom:16px;">Mi történik az idegrendszeremben?</p>
         <p style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:300;color:rgba(255,255,255,.55);line-height:1.85;">A légzés egyedülálló: egyszerre akaratlagos és autonóm. Amikor tudatosan dolgozunk vele, olyan utak nyílnak meg, amelyekhez egyébként nehezen férünk hozzá. Egy időre elérhetjük, hogy a paraszimpatikus rendszer domináljon, a tudatos kontroll csökkenjen — és a test végre úgy szólalhasson meg, hogy meg is halljuk.</p>
       </div>
 
@@ -157,15 +185,15 @@
       <div class="glass reveal d2" style="padding:38px 32px;">
         <div class="layer-icon">
           <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-            <circle cx="11" cy="4" r="2" stroke="rgba(76,215,122,0.88)" stroke-width="1.5"/>
-            <path d="M4 13 C7 8 10 17 11 13 S15 8 18 13" stroke="rgba(76,215,122,0.88)" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="11" cy="4" r="2" stroke="rgba(var(--accent-rgb),0.88)" stroke-width="1.5"/>
+            <path d="M4 13 C7 8 10 17 11 13 S15 8 18 13" stroke="rgba(var(--accent-rgb),0.88)" stroke-width="1.5" stroke-linecap="round"/>
           </svg>
         </div>
         <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:10px;">
-          <span class="serif" style="font-size:15px;color:rgba(76,215,122,.55);letter-spacing:.08em;">02</span>
+          <span class="serif" style="font-size:15px;color:rgba(var(--accent-rgb),.55);letter-spacing:.08em;">02</span>
           <h3 class="serif" style="font-size:29px;font-weight:400;color:#fff;">Testmunka</h3>
         </div>
-        <p class="serif" style="font-style:italic;font-size:17px;color:rgba(76,215,122,.82);line-height:1.5;margin-bottom:16px;">Mit hordoz a testem?</p>
+        <p class="serif" style="font-style:italic;font-size:17px;color:rgba(var(--accent-rgb),.82);line-height:1.5;margin-bottom:16px;">Mit hordoz a testem?</p>
         <p style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:300;color:rgba(255,255,255,.55);line-height:1.85;">A traumáink nem elsősorban emlékként tárolódnak. Testérzésként élnek bennünk — feszültségben, zsibbadásban, visszatérő mintákban. A szomatikus munka azért fontos, hogy az ezek mögött meghúzódó traumák feloldódjanak, és utat találjanak a felszínre.</p>
       </div>
 
@@ -173,16 +201,16 @@
       <div class="glass reveal d3" style="padding:38px 32px;">
         <div class="layer-icon">
           <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-            <circle cx="7" cy="8" r="3" stroke="rgba(76,215,122,0.88)" stroke-width="1.5"/>
-            <circle cx="15" cy="14" r="3" stroke="rgba(76,215,122,0.88)" stroke-width="1.5"/>
-            <path d="M9.4 9.7 L12.6 12.3" stroke="rgba(76,215,122,0.88)" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="7" cy="8" r="3" stroke="rgba(var(--accent-rgb),0.88)" stroke-width="1.5"/>
+            <circle cx="15" cy="14" r="3" stroke="rgba(var(--accent-rgb),0.88)" stroke-width="1.5"/>
+            <path d="M9.4 9.7 L12.6 12.3" stroke="rgba(var(--accent-rgb),0.88)" stroke-width="1.5" stroke-linecap="round"/>
           </svg>
         </div>
         <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:10px;">
-          <span class="serif" style="font-size:15px;color:rgba(76,215,122,.55);letter-spacing:.08em;">03</span>
+          <span class="serif" style="font-size:15px;color:rgba(var(--accent-rgb),.55);letter-spacing:.08em;">03</span>
           <h3 class="serif" style="font-size:29px;font-weight:400;color:#fff;">Pszichodráma</h3>
         </div>
-        <p class="serif" style="font-style:italic;font-size:17px;color:rgba(76,215,122,.82);line-height:1.5;margin-bottom:16px;">Mi nem történhetett meg köztem és a másik között?</p>
+        <p class="serif" style="font-style:italic;font-size:17px;color:rgba(var(--accent-rgb),.82);line-height:1.5;margin-bottom:16px;">Mi nem történhetett meg köztem és a másik között?</p>
         <p style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:300;color:rgba(255,255,255,.55);line-height:1.85;">A pszichodrámában nem csak megértjük, ami volt — elvégezzük azt, ami nem történhetett meg. A csoport terében a múlt nem rögzített: ami félbemaradt, befejezhető; ami megtörtént, átírható. A dramatikus cselekvés más, mint az intellektuális belátás — a szervezet is megérzi, hogy valami lezárult, valami feloldódott.</p>
       </div>
 
@@ -190,17 +218,17 @@
       <div class="glass reveal d4" style="padding:38px 32px;">
         <div class="layer-icon">
           <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-            <circle cx="11" cy="16" r="2" stroke="rgba(76,215,122,0.88)" stroke-width="1.5"/>
-            <circle cx="6" cy="6" r="2" stroke="rgba(76,215,122,0.88)" stroke-width="1.5"/>
-            <circle cx="16" cy="6" r="2" stroke="rgba(76,215,122,0.88)" stroke-width="1.5"/>
-            <path d="M7.3 7.4 L10.1 14.2 M14.7 7.4 L11.9 14.2" stroke="rgba(76,215,122,0.88)" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="11" cy="16" r="2" stroke="rgba(var(--accent-rgb),0.88)" stroke-width="1.5"/>
+            <circle cx="6" cy="6" r="2" stroke="rgba(var(--accent-rgb),0.88)" stroke-width="1.5"/>
+            <circle cx="16" cy="6" r="2" stroke="rgba(var(--accent-rgb),0.88)" stroke-width="1.5"/>
+            <path d="M7.3 7.4 L10.1 14.2 M14.7 7.4 L11.9 14.2" stroke="rgba(var(--accent-rgb),0.88)" stroke-width="1.5" stroke-linecap="round"/>
           </svg>
         </div>
         <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:10px;">
-          <span class="serif" style="font-size:15px;color:rgba(76,215,122,.55);letter-spacing:.08em;">04</span>
+          <span class="serif" style="font-size:15px;color:rgba(var(--accent-rgb),.55);letter-spacing:.08em;">04</span>
           <h3 class="serif" style="font-size:29px;font-weight:400;color:#fff;">Családállítás</h3>
         </div>
-        <p class="serif" style="font-style:italic;font-size:17px;color:rgba(76,215,122,.82);line-height:1.5;margin-bottom:16px;">Mit hordozok azoktól, akik előttem jöttek?</p>
+        <p class="serif" style="font-style:italic;font-size:17px;color:rgba(var(--accent-rgb),.82);line-height:1.5;margin-bottom:16px;">Mit hordozok azoktól, akik előttem jöttek?</p>
         <p style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:300;color:rgba(255,255,255,.55);line-height:1.85;">Mintáink nem a fogantatásunktól kezdődnek. A testünk generációs terheket, lojalitásokat, megoldatlan dinamikákat is hordoz. Ahol a többi modalitás eléri a határát, ott lép be a családállítás — amikor a rendszer dinamikája láthatóvá, és feloldhatóvá válik.</p>
       </div>
     </div>
@@ -208,7 +236,7 @@
 </section>
 
 <!-- ============ METAFORA (folyó) ============ -->
-<section class="metaphor" style="position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;background:#0a1410;">
+<section class="metaphor" style="position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;background:var(--dark);">
   <img class="metaphor-poster" src="assets/metafora-poster.jpg" alt="Türkiz folyó sziklák között, erdős völgyben">
   <video class="metaphor-video" autoplay muted loop playsinline preload="auto">
     <source src="assets/metafora.mp4" type="video/mp4">
@@ -216,39 +244,39 @@
   <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,16,12,.62) 0%,rgba(8,16,12,.34) 38%,rgba(8,16,12,.72) 100%);"></div>
   <div class="ctr reveal" style="position:relative;z-index:1;padding-top:80px;padding-bottom:80px;">
     <blockquote class="serif" style="font-size:clamp(24px,4.4vw,44px);font-weight:300;font-style:italic;color:#f3efe7;line-height:1.4;max-width:840px;margin:0 auto;text-shadow:0 2px 24px rgba(0,0,0,.4);">„A Breath Body and Soul olyan, mint egy folyó. A légzés az áramlás ereje. A test a meder. A pszichodráma az a pillanat, amikor a víz sziklába ütközik és irányt vált. A családállítás pedig a forrás és a torkolat is egyszerre."</blockquote>
-    <p style="font-family:'DM Sans',sans-serif;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:rgba(76,215,122,.9);margin-top:30px;">— Generál Péter</p>
+    <p style="font-family:'DM Sans',sans-serif;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:rgba(var(--accent-rgb),.9);margin-top:30px;">— Generál Péter</p>
   </div>
 </section>
 
 <!-- ============ KINEK SZÓL ============ -->
-<section style="background:#f5f1eb;padding:100px 0;">
+<section style="background:var(--cream);padding:100px 0;">
   <div class="ctr">
     <div style="margin-bottom:64px;" class="reveal">
       <p class="eyebrow">Kinek szól</p>
-      <h2 class="serif" style="font-size:clamp(38px,7vw,62px);font-weight:300;color:#1a2e20;line-height:1.1;">Neked szól, ha…</h2>
+      <h2 class="serif" style="font-size:clamp(38px,7vw,62px);font-weight:300;color:var(--ink);line-height:1.1;">Neked szól, ha…</h2>
     </div>
     <div class="audience-grid">
       <div class="reveal d1">
-        <p class="serif" style="font-size:56px;font-weight:300;color:rgba(43,106,72,.78);line-height:1;margin-bottom:18px;">01</p>
-        <p style="font-family:'DM Sans',sans-serif;font-size:16px;font-weight:300;color:rgba(26,46,32,.7);line-height:1.8;">Segítő munkát végzel — terapeutaként, coachként, facilitátorként — és tudod, hogy a saját gyógyulásod nem ért véget egy képzéssel.</p>
+        <p class="serif" style="font-size:56px;font-weight:300;color:rgba(var(--deep-rgb),.78);line-height:1;margin-bottom:18px;">01</p>
+        <p style="font-family:'DM Sans',sans-serif;font-size:16px;font-weight:300;color:rgba(var(--ink-rgb),.7);line-height:1.8;">Segítő munkát végzel — terapeutaként, coachként, facilitátorként — és tudod, hogy a saját gyógyulásod nem ért véget egy képzéssel.</p>
       </div>
       <div class="reveal d2">
-        <p class="serif" style="font-size:56px;font-weight:300;color:rgba(43,106,72,.78);line-height:1;margin-bottom:18px;">02</p>
-        <p style="font-family:'DM Sans',sans-serif;font-size:16px;font-weight:300;color:rgba(26,46,32,.7);line-height:1.8;">Érzed, hogy az „érteni" nem elég. Valami mélyebb mozdulatlanságot hordozol, amit az intellektuális feldolgozás nem old fel.</p>
+        <p class="serif" style="font-size:56px;font-weight:300;color:rgba(var(--deep-rgb),.78);line-height:1;margin-bottom:18px;">02</p>
+        <p style="font-family:'DM Sans',sans-serif;font-size:16px;font-weight:300;color:rgba(var(--ink-rgb),.7);line-height:1.8;">Érzed, hogy az „érteni" nem elég. Valami mélyebb mozdulatlanságot hordozol, amit az intellektuális feldolgozás nem old fel.</p>
       </div>
       <div class="reveal d3">
-        <p class="serif" style="font-size:56px;font-weight:300;color:rgba(43,106,72,.78);line-height:1;margin-bottom:18px;">03</p>
-        <p style="font-family:'DM Sans',sans-serif;font-size:16px;font-weight:300;color:rgba(26,46,32,.7);line-height:1.8;">Kíváncsi vagy, milyen egy tér, ahol a légzés, a test, a kapcsolat és a generációs minta egyszerre kaphat figyelmet.</p>
+        <p class="serif" style="font-size:56px;font-weight:300;color:rgba(var(--deep-rgb),.78);line-height:1;margin-bottom:18px;">03</p>
+        <p style="font-family:'DM Sans',sans-serif;font-size:16px;font-weight:300;color:rgba(var(--ink-rgb),.7);line-height:1.8;">Kíváncsi vagy, milyen egy tér, ahol a légzés, a test, a kapcsolat és a generációs minta egyszerre kaphat figyelmet.</p>
       </div>
     </div>
-    <div class="reveal d2" style="max-width:640px;margin:64px auto 0;text-align:center;border-top:1px solid rgba(26,46,32,.12);padding-top:36px;">
-      <p style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:300;color:rgba(26,46,32,.6);line-height:1.8;"><strong style="font-weight:500;color:#1a2e20;">A trauma nem kizáró ok.</strong> A program ennek feltárását is tartalmazza, és felkészülten kezeli.</p>
+    <div class="reveal d2" style="max-width:640px;margin:64px auto 0;text-align:center;border-top:1px solid rgba(var(--ink-rgb),.12);padding-top:36px;">
+      <p style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:300;color:rgba(var(--ink-rgb),.6);line-height:1.8;"><strong style="font-weight:500;color:var(--ink);">A trauma nem kizáró ok.</strong> A program ennek feltárását is tartalmazza, és felkészülten kezeli.</p>
     </div>
   </div>
 </section>
 
 <!-- ============ AMIT MÁSOK MONDANAK ============ -->
-<section style="background:#0a1410;padding:100px 0;">
+<section style="background:var(--dark);padding:100px 0;">
   <div class="ctr">
     <div style="margin-bottom:54px;" class="reveal">
       <p class="eyebrow eyebrow-glow">Visszajelzések</p>
@@ -256,10 +284,10 @@
     </div>
     <div class="testi-grid">
       <div class="glass testi-card" style="padding:34px;scroll-snap-align:start;">
-        <p style="color:#4cd77a;font-size:13px;margin-bottom:18px;letter-spacing:.1em;">★★★★★</p>
+        <p style="color:var(--accent);font-size:13px;margin-bottom:18px;letter-spacing:.1em;">★★★★★</p>
         <p class="serif" style="font-size:20px;font-style:italic;color:rgba(255,255,255,.9);line-height:1.65;margin-bottom:26px;">„Ez volt az első alkalom, hogy igazán hallottam a saját testem hangját. Más ember vagyok a program óta."</p>
         <div style="display:flex;align-items:center;gap:14px;">
-          <div style="width:40px;height:40px;border-radius:50%;background:rgba(76,215,122,.18);border:1px solid rgba(76,215,122,.28);display:flex;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:#4cd77a;flex-shrink:0;">K.&nbsp;E.</div>
+          <div style="width:40px;height:40px;border-radius:50%;background:rgba(var(--accent-rgb),.18);border:1px solid rgba(var(--accent-rgb),.28);display:flex;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:var(--accent);flex-shrink:0;">K.&nbsp;E.</div>
           <div>
             <p style="font-family:'DM Sans',sans-serif;font-size:14px;color:#fff;margin-bottom:3px;">Résztvevő</p>
             <p style="font-family:'DM Sans',sans-serif;font-size:12px;color:rgba(255,255,255,.32);">34 éves · Budapest</p>
@@ -267,10 +295,10 @@
         </div>
       </div>
       <div class="glass testi-card" style="padding:34px;scroll-snap-align:start;">
-        <p style="color:#4cd77a;font-size:13px;margin-bottom:18px;letter-spacing:.1em;">★★★★★</p>
+        <p style="color:var(--accent);font-size:13px;margin-bottom:18px;letter-spacing:.1em;">★★★★★</p>
         <p class="serif" style="font-size:20px;font-style:italic;color:rgba(255,255,255,.9);line-height:1.65;margin-bottom:26px;">„A testmunka segített elengedni azt, amit évek óta hordoztam. Hálás vagyok ezért a térért."</p>
         <div style="display:flex;align-items:center;gap:14px;">
-          <div style="width:40px;height:40px;border-radius:50%;background:rgba(76,215,122,.18);border:1px solid rgba(76,215,122,.28);display:flex;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:#4cd77a;flex-shrink:0;">N.&nbsp;P.</div>
+          <div style="width:40px;height:40px;border-radius:50%;background:rgba(var(--accent-rgb),.18);border:1px solid rgba(var(--accent-rgb),.28);display:flex;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:var(--accent);flex-shrink:0;">N.&nbsp;P.</div>
           <div>
             <p style="font-family:'DM Sans',sans-serif;font-size:14px;color:#fff;margin-bottom:3px;">Résztvevő</p>
             <p style="font-family:'DM Sans',sans-serif;font-size:12px;color:rgba(255,255,255,.32);">41 éves · Debrecen</p>
@@ -278,10 +306,10 @@
         </div>
       </div>
       <div class="glass testi-card" style="padding:34px;scroll-snap-align:start;">
-        <p style="color:#4cd77a;font-size:13px;margin-bottom:18px;letter-spacing:.1em;">★★★★★</p>
+        <p style="color:var(--accent);font-size:13px;margin-bottom:18px;letter-spacing:.1em;">★★★★★</p>
         <p class="serif" style="font-size:20px;font-style:italic;color:rgba(255,255,255,.9);line-height:1.65;margin-bottom:26px;">„Valami lezárult bennem, amit korábban semmilyen beszélgetés nem ért el. Megváltozott, ahogy az életemet élem."</p>
         <div style="display:flex;align-items:center;gap:14px;">
-          <div style="width:40px;height:40px;border-radius:50%;background:rgba(76,215,122,.18);border:1px solid rgba(76,215,122,.28);display:flex;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:#4cd77a;flex-shrink:0;">T.&nbsp;R.</div>
+          <div style="width:40px;height:40px;border-radius:50%;background:rgba(var(--accent-rgb),.18);border:1px solid rgba(var(--accent-rgb),.28);display:flex;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:var(--accent);flex-shrink:0;">T.&nbsp;R.</div>
           <div>
             <p style="font-family:'DM Sans',sans-serif;font-size:14px;color:#fff;margin-bottom:3px;">Résztvevő</p>
             <p style="font-family:'DM Sans',sans-serif;font-size:12px;color:rgba(255,255,255,.32);">28 éves · Győr</p>
@@ -296,16 +324,16 @@
 <!-- ============ PARALLAX KÉP-SÁV (csoport) ============ -->
 <section class="parallax" aria-label="Breathwork-csoport a szabadban">
   <div class="parallax-inner" style="background-image:url('assets/breath-group.jpg');background-position:center 42%;"></div>
-  <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,20,16,.5),transparent 26%,transparent 62%,rgba(245,241,235,.62));pointer-events:none;"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,20,16,.5),transparent 26%,transparent 62%,rgba(var(--cream-rgb),.62));pointer-events:none;"></div>
 </section>
 
 <!-- ============ AZ ALAPÍTÓK ============ -->
-<section style="background:#f5f1eb;padding:100px 0;">
+<section style="background:var(--cream);padding:100px 0;">
   <div class="ctr">
     <div style="max-width:720px;margin:0 auto 60px;text-align:center;" class="reveal">
       <p class="eyebrow">Az alapítók</p>
-      <h2 class="serif" style="font-size:clamp(38px,6vw,58px);font-weight:300;color:#1a2e20;line-height:1.12;margin-bottom:24px;">Péter &amp; Viki</h2>
-      <p class="serif" style="font-size:clamp(19px,2.6vw,23px);color:rgba(26,46,32,.74);line-height:1.74;">Péter és Viki évek óta vezetnek együtt pszichodráma-csoportokat, és mindketten több breathwork-iskolában képződtek (Alchemy of Breath, BBTRS). A Breath Body and Soul abból a felismerésből nőtt ki, ami a közös munkában vált nyilvánvalóvá: ez a négy modalitás, egymással integrálva, megsokszorozza azt, amit külön-külön tennének.</p>
+      <h2 class="serif" style="font-size:clamp(38px,6vw,58px);font-weight:300;color:var(--ink);line-height:1.12;margin-bottom:24px;">Péter &amp; Viki</h2>
+      <p class="serif" style="font-size:clamp(19px,2.6vw,23px);color:rgba(var(--ink-rgb),.74);line-height:1.74;">Péter és Viki évek óta vezetnek együtt pszichodráma-csoportokat, és mindketten több breathwork-iskolában képződtek (Alchemy of Breath, BBTRS). A Breath Body and Soul abból a felismerésből nőtt ki, ami a közös munkában vált nyilvánvalóvá: ez a négy modalitás, egymással integrálva, megsokszorozza azt, amit külön-külön tennének.</p>
     </div>
     <div style="display:flex;flex-direction:column;gap:72px;">
 
@@ -313,10 +341,10 @@
       <div class="founder-row reveal">
         <div class="f-photo"><img src="assets/peter.jpg" alt="Generál Péter portré" style="object-position:center 28%;"></div>
         <div class="f-text">
-          <h3 class="serif" style="font-size:clamp(28px,4vw,38px);font-weight:400;color:#1a2e20;margin-bottom:6px;">Generál Péter</h3>
-          <p style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:#2b6a48;margin-bottom:22px;">MCC coach · Kiképző pszichodráma-vezető · Krízisterapeuta</p>
-          <p style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:300;color:rgba(26,46,32,.74);line-height:1.82;margin-bottom:18px;">Péter azt mondja, akkor a leghasznosabb, ha igazán nagy a baj. Nem kicsit nagy. Igazán nagy. Ez vagy szokatlan személyes márka, vagy pontos önismeret — negyven év után a kettő nagyjából ugyanúgy néz ki.</p>
-          <p style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:300;color:rgba(26,46,32,.74);line-height:1.82;">Közgazdászként kezdett. Aztán vezető, tréner. Az a fordulat, ami mindent átrendezett, személyes volt — nyíltan beszél róla: a válása. Azóta foglalkoztatja egy kérdés: <strong style="font-weight:500;color:#1a2e20;">mi segít abban, hogy valaki önmaga lehessen?</strong> A keresés elvitte Marshall Rosenberghez és az Erőszakmentes Kommunikációhoz, pszichodráma-képzésre, az Alchemy of Breath facilitátori programjába. Ma MCC-minősítésű coach, kiképző pszichodráma-vezető, krízisterapeuta. Csoportokban dolgozik, légzéssel — és azzal az egészen konkrét drámával, ami egy szobában akkor zajlik, amikor az emberek abbahagyják a teljesítmény hajszolását, leveszik a külvilágnak felvett álarcot, és megmutatják magukat.</p>
+          <h3 class="serif" style="font-size:clamp(28px,4vw,38px);font-weight:400;color:var(--ink);margin-bottom:6px;">Generál Péter</h3>
+          <p style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:var(--deep);margin-bottom:22px;">MCC coach · Kiképző pszichodráma-vezető · Krízisterapeuta</p>
+          <p style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:300;color:rgba(var(--ink-rgb),.74);line-height:1.82;margin-bottom:18px;">Péter azt mondja, akkor a leghasznosabb, ha igazán nagy a baj. Nem kicsit nagy. Igazán nagy. Ez vagy szokatlan személyes márka, vagy pontos önismeret — negyven év után a kettő nagyjából ugyanúgy néz ki.</p>
+          <p style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:300;color:rgba(var(--ink-rgb),.74);line-height:1.82;">Közgazdászként kezdett. Aztán vezető, tréner. Az a fordulat, ami mindent átrendezett, személyes volt — nyíltan beszél róla: a válása. Azóta foglalkoztatja egy kérdés: <strong style="font-weight:500;color:var(--ink);">mi segít abban, hogy valaki önmaga lehessen?</strong> A keresés elvitte Marshall Rosenberghez és az Erőszakmentes Kommunikációhoz, pszichodráma-képzésre, az Alchemy of Breath facilitátori programjába. Ma MCC-minősítésű coach, kiképző pszichodráma-vezető, krízisterapeuta. Csoportokban dolgozik, légzéssel — és azzal az egészen konkrét drámával, ami egy szobában akkor zajlik, amikor az emberek abbahagyják a teljesítmény hajszolását, leveszik a külvilágnak felvett álarcot, és megmutatják magukat.</p>
         </div>
       </div>
 
@@ -324,12 +352,12 @@
       <div class="founder-row rev reveal">
         <div class="f-photo"><img src="assets/viki.jpg" alt="Fáy Viktória portré" style="object-position:center 25%;"></div>
         <div class="f-text">
-          <h3 class="serif" style="font-size:clamp(28px,4vw,38px);font-weight:400;color:#1a2e20;margin-bottom:6px;">Fáy Viktória</h3>
-          <p style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:#2b6a48;margin-bottom:22px;">Pszichológus · Pszichodráma-vezető · Breathwork facilitátor</p>
-          <p style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:300;color:rgba(26,46,32,.74);line-height:1.82;margin-bottom:18px;">Pszichológusként végeztem, és több mint tíz éve kísérek embereket egyéni és csoportos folyamatokban. Emellett ugyanennyi ideje dolgozom szervezetfejlesztési területen coachként, coachképzőként és trénerként. Két kislány édesanyjaként a mindennapokban is megtapasztalom, mennyire fontos a kapcsolódás, a rugalmasság és a folyamatos fejlődés.</p>
-          <p style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:300;color:rgba(26,46,32,.74);line-height:1.82;margin-bottom:18px;">Pszichodráma-vezetőként hiszek a csoport megtartó erejében, az „itt és most” erejében, valamint a test bölcsességében. Számomra a jelenlét azt jelenti, hogy figyelünk a testünk jelzéseire, és teret adunk annak, ami éppen megszületni szeretne bennünk.</p>
-          <p style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:300;color:rgba(26,46,32,.74);line-height:1.82;margin-bottom:18px;">Az évek során számos testfókuszú módszert tanultam. Breathwork facilitátorként (BBTRS) a légzéssel való munka új perspektívát nyitott számomra a trauma és a gyógyulás megértésében. Azóta a légzés a csoportjaimnak és az egyéni munkámnak is fontos része.</p>
-          <p style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:300;color:rgba(26,46,32,.74);line-height:1.82;">Csoportjaimban integratív szemlélettel dolgozom: a pszichodráma mellett testorientált technikákat, művészet- és zeneterápiás elemeket, valamint coaching eszközöket is használok. Szeretem, amikor a felismerések nemcsak fejben születnek meg, hanem a testben és a kapcsolatokban is átélhetővé válnak, mert <strong style="font-weight:500;color:#1a2e20;">ezekből lesz valódi változás</strong>.</p>
+          <h3 class="serif" style="font-size:clamp(28px,4vw,38px);font-weight:400;color:var(--ink);margin-bottom:6px;">Fáy Viktória</h3>
+          <p style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:var(--deep);margin-bottom:22px;">Pszichológus · Pszichodráma-vezető · Breathwork facilitátor</p>
+          <p style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:300;color:rgba(var(--ink-rgb),.74);line-height:1.82;margin-bottom:18px;">Pszichológusként végeztem, és több mint tíz éve kísérek embereket egyéni és csoportos folyamatokban. Emellett ugyanennyi ideje dolgozom szervezetfejlesztési területen coachként, coachképzőként és trénerként. Két kislány édesanyjaként a mindennapokban is megtapasztalom, mennyire fontos a kapcsolódás, a rugalmasság és a folyamatos fejlődés.</p>
+          <p style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:300;color:rgba(var(--ink-rgb),.74);line-height:1.82;margin-bottom:18px;">Pszichodráma-vezetőként hiszek a csoport megtartó erejében, az „itt és most” erejében, valamint a test bölcsességében. Számomra a jelenlét azt jelenti, hogy figyelünk a testünk jelzéseire, és teret adunk annak, ami éppen megszületni szeretne bennünk.</p>
+          <p style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:300;color:rgba(var(--ink-rgb),.74);line-height:1.82;margin-bottom:18px;">Az évek során számos testfókuszú módszert tanultam. Breathwork facilitátorként (BBTRS) a légzéssel való munka új perspektívát nyitott számomra a trauma és a gyógyulás megértésében. Azóta a légzés a csoportjaimnak és az egyéni munkámnak is fontos része.</p>
+          <p style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:300;color:rgba(var(--ink-rgb),.74);line-height:1.82;">Csoportjaimban integratív szemlélettel dolgozom: a pszichodráma mellett testorientált technikákat, művészet- és zeneterápiás elemeket, valamint coaching eszközöket is használok. Szeretem, amikor a felismerések nemcsak fejben születnek meg, hanem a testben és a kapcsolatokban is átélhetővé válnak, mert <strong style="font-weight:500;color:var(--ink);">ezekből lesz valódi változás</strong>.</p>
         </div>
       </div>
 
@@ -338,47 +366,47 @@
 </section>
 
 <!-- ============ CIKKEK & GONDOLATOK ============ -->
-<section style="background:#faf9f6;padding:100px 0;">
+<section style="background:var(--cream2);padding:100px 0;">
   <div class="ctr">
     <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:54px;" class="reveal">
       <div>
         <p class="eyebrow">Olvasnivaló</p>
-        <h2 class="serif" style="font-size:clamp(38px,7vw,62px);font-weight:300;color:#1a2e20;line-height:1.1;">Cikkek &amp; gondolatok</h2>
+        <h2 class="serif" style="font-size:clamp(38px,7vw,62px);font-weight:300;color:var(--ink);line-height:1.1;">Cikkek &amp; gondolatok</h2>
       </div>
-      <a href="cikkek/cikk-1.html" style="font-family:'DM Sans',sans-serif;font-size:14px;color:rgba(26,46,32,.5);text-decoration:none;border-bottom:1px solid rgba(76,215,122,.4);padding-bottom:3px;letter-spacing:.04em;white-space:nowrap;">Összes cikk →</a>
+      <a href="cikkek/cikk-1.html" style="font-family:'DM Sans',sans-serif;font-size:14px;color:rgba(var(--ink-rgb),.5);text-decoration:none;border-bottom:1px solid rgba(var(--accent-rgb),.4);padding-bottom:3px;letter-spacing:.04em;white-space:nowrap;">Összes cikk →</a>
     </div>
     <div class="articles-grid">
       <a class="article-card reveal d1" href="cikkek/cikk-1.html" style="text-decoration:none;display:block;">
-        <div style="border-radius:16px 16px 0 0;aspect-ratio:16/10;background:repeating-linear-gradient(135deg,#1b3223 0,#1b3223 2px,#152b1d 2px,#152b1d 22px);display:flex;align-items:center;justify-content:center;overflow:hidden;">
+        <div style="border-radius:16px 16px 0 0;aspect-ratio:16/10;background:repeating-linear-gradient(135deg,var(--ph1) 0,var(--ph1) 2px,var(--ph2) 2px,var(--ph2) 22px);display:flex;align-items:center;justify-content:center;overflow:hidden;">
           <span style="font-family:monospace;font-size:10px;color:rgba(255,255,255,.2);letter-spacing:.1em;">meditáció — fotó</span>
         </div>
-        <div style="padding:24px;background:#fff;border-radius:0 0 16px 16px;border:1px solid rgba(26,46,32,.07);border-top:none;">
-          <p style="font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#2b6a48;margin-bottom:12px;">Légzés</p>
-          <h3 class="serif" style="font-size:22px;font-weight:400;color:#1a2e20;line-height:1.35;margin-bottom:12px;">Miért nem elég a meditáció önmagában?</h3>
-          <p style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:300;color:rgba(26,46,32,.55);line-height:1.8;margin-bottom:20px;">A mindfulness hasznos — de a test mélyen tárolt feszültségeit nem mindig érjük el a gondolatok puszta megfigyelésével.</p>
-          <span style="font-family:'DM Sans',sans-serif;font-size:13px;color:#1a2e20;border-bottom:1px solid rgba(76,215,122,.45);padding-bottom:2px;letter-spacing:.04em;">Olvasd el →</span>
+        <div style="padding:24px;background:#fff;border-radius:0 0 16px 16px;border:1px solid rgba(var(--ink-rgb),.07);border-top:none;">
+          <p style="font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--deep);margin-bottom:12px;">Légzés</p>
+          <h3 class="serif" style="font-size:22px;font-weight:400;color:var(--ink);line-height:1.35;margin-bottom:12px;">Miért nem elég a meditáció önmagában?</h3>
+          <p style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:300;color:rgba(var(--ink-rgb),.55);line-height:1.8;margin-bottom:20px;">A mindfulness hasznos — de a test mélyen tárolt feszültségeit nem mindig érjük el a gondolatok puszta megfigyelésével.</p>
+          <span style="font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink);border-bottom:1px solid rgba(var(--accent-rgb),.45);padding-bottom:2px;letter-spacing:.04em;">Olvasd el →</span>
         </div>
       </a>
       <a class="article-card reveal d2" href="cikkek/cikk-2.html" style="text-decoration:none;display:block;">
-        <div style="border-radius:16px 16px 0 0;aspect-ratio:16/10;background:repeating-linear-gradient(135deg,#1b3223 0,#1b3223 2px,#152b1d 2px,#152b1d 22px);display:flex;align-items:center;justify-content:center;overflow:hidden;">
+        <div style="border-radius:16px 16px 0 0;aspect-ratio:16/10;background:repeating-linear-gradient(135deg,var(--ph1) 0,var(--ph1) 2px,var(--ph2) 2px,var(--ph2) 22px);display:flex;align-items:center;justify-content:center;overflow:hidden;">
           <span style="font-family:monospace;font-size:10px;color:rgba(255,255,255,.2);letter-spacing:.1em;">légzés — fotó</span>
         </div>
-        <div style="padding:24px;background:#fff;border-radius:0 0 16px 16px;border:1px solid rgba(26,46,32,.07);border-top:none;">
-          <p style="font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#2b6a48;margin-bottom:12px;">Idegrendszer</p>
-          <h3 class="serif" style="font-size:22px;font-weight:400;color:#1a2e20;line-height:1.35;margin-bottom:12px;">A légzés és az idegrendszer titkos kapcsolata</h3>
-          <p style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:300;color:rgba(26,46,32,.55);line-height:1.8;margin-bottom:20px;">Hogyan szabályozza a légzésritmus a stresszválaszt — és miért ez a leggyorsabb út a megnyugváshoz?</p>
-          <span style="font-family:'DM Sans',sans-serif;font-size:13px;color:#1a2e20;border-bottom:1px solid rgba(76,215,122,.45);padding-bottom:2px;letter-spacing:.04em;">Olvasd el →</span>
+        <div style="padding:24px;background:#fff;border-radius:0 0 16px 16px;border:1px solid rgba(var(--ink-rgb),.07);border-top:none;">
+          <p style="font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--deep);margin-bottom:12px;">Idegrendszer</p>
+          <h3 class="serif" style="font-size:22px;font-weight:400;color:var(--ink);line-height:1.35;margin-bottom:12px;">A légzés és az idegrendszer titkos kapcsolata</h3>
+          <p style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:300;color:rgba(var(--ink-rgb),.55);line-height:1.8;margin-bottom:20px;">Hogyan szabályozza a légzésritmus a stresszválaszt — és miért ez a leggyorsabb út a megnyugváshoz?</p>
+          <span style="font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink);border-bottom:1px solid rgba(var(--accent-rgb),.45);padding-bottom:2px;letter-spacing:.04em;">Olvasd el →</span>
         </div>
       </a>
       <a class="article-card reveal d3" href="cikkek/cikk-3.html" style="text-decoration:none;display:block;">
-        <div style="border-radius:16px 16px 0 0;aspect-ratio:16/10;background:repeating-linear-gradient(135deg,#1b3223 0,#1b3223 2px,#152b1d 2px,#152b1d 22px);display:flex;align-items:center;justify-content:center;overflow:hidden;">
+        <div style="border-radius:16px 16px 0 0;aspect-ratio:16/10;background:repeating-linear-gradient(135deg,var(--ph1) 0,var(--ph1) 2px,var(--ph2) 2px,var(--ph2) 22px);display:flex;align-items:center;justify-content:center;overflow:hidden;">
           <span style="font-family:monospace;font-size:10px;color:rgba(255,255,255,.2);letter-spacing:.1em;">test · szomatikus — fotó</span>
         </div>
-        <div style="padding:24px;background:#fff;border-radius:0 0 16px 16px;border:1px solid rgba(26,46,32,.07);border-top:none;">
-          <p style="font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#2b6a48;margin-bottom:12px;">Szomatikus</p>
-          <h3 class="serif" style="font-size:22px;font-weight:400;color:#1a2e20;line-height:1.35;margin-bottom:12px;">Szomatikus ébredés: hogyan engedi el a tested?</h3>
-          <p style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:300;color:rgba(26,46,32,.55);line-height:1.8;margin-bottom:20px;">A test nem hazudik. A szomatikus munka segít meghallani, amit a tested régóta el akar mondani neked.</p>
-          <span style="font-family:'DM Sans',sans-serif;font-size:13px;color:#1a2e20;border-bottom:1px solid rgba(76,215,122,.45);padding-bottom:2px;letter-spacing:.04em;">Olvasd el →</span>
+        <div style="padding:24px;background:#fff;border-radius:0 0 16px 16px;border:1px solid rgba(var(--ink-rgb),.07);border-top:none;">
+          <p style="font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--deep);margin-bottom:12px;">Szomatikus</p>
+          <h3 class="serif" style="font-size:22px;font-weight:400;color:var(--ink);line-height:1.35;margin-bottom:12px;">Szomatikus ébredés: hogyan engedi el a tested?</h3>
+          <p style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:300;color:rgba(var(--ink-rgb),.55);line-height:1.8;margin-bottom:20px;">A test nem hazudik. A szomatikus munka segít meghallani, amit a tested régóta el akar mondani neked.</p>
+          <span style="font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink);border-bottom:1px solid rgba(var(--accent-rgb),.45);padding-bottom:2px;letter-spacing:.04em;">Olvasd el →</span>
         </div>
       </a>
     </div>
@@ -392,7 +420,7 @@
 </section>
 
 <!-- ============ AZ APPLIKÁCIÓ ============ -->
-<section style="background:#0a1410;padding:100px 0;text-align:center;">
+<section style="background:var(--dark);padding:100px 0;text-align:center;">
   <div class="ctr">
     <div class="reveal">
       <p class="eyebrow eyebrow-glow">Az applikáció</p>
@@ -401,11 +429,11 @@
     </div>
     <div class="reveal d1" style="display:inline-block;margin-bottom:48px;">
       <div style="width:190px;height:360px;border-radius:32px;border:2px solid rgba(255,255,255,.11);background:rgba(255,255,255,.03);display:flex;align-items:center;justify-content:center;margin:0 auto;position:relative;overflow:hidden;">
-        <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,rgba(76,215,122,.38),transparent);"></div>
+        <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,rgba(var(--accent-rgb),.38),transparent);"></div>
         <div style="position:absolute;top:14px;left:50%;transform:translateX(-50%);width:38px;height:5px;border-radius:3px;background:rgba(255,255,255,.11);"></div>
         <div style="display:flex;flex-direction:column;align-items:center;gap:14px;">
-          <div style="width:52px;height:52px;border-radius:14px;background:rgba(76,215,122,.12);border:1px solid rgba(76,215,122,.28);display:flex;align-items:center;justify-content:center;">
-            <div class="breath-ring" style="width:24px;height:24px;border-radius:50%;border:1.5px solid rgba(76,215,122,.65);"></div>
+          <div style="width:52px;height:52px;border-radius:14px;background:rgba(var(--accent-rgb),.12);border:1px solid rgba(var(--accent-rgb),.28);display:flex;align-items:center;justify-content:center;">
+            <div class="breath-ring" style="width:24px;height:24px;border-radius:50%;border:1.5px solid rgba(var(--accent-rgb),.65);"></div>
           </div>
           <span class="serif" style="font-size:13px;letter-spacing:.1em;color:rgba(255,255,255,.4);">BBS</span>
         </div>
@@ -431,9 +459,9 @@
 </section>
 
 <!-- ============ PROGRAM & JELENTKEZÉS ============ -->
-<section id="program" style="background:#0a1410;padding:110px 0;position:relative;overflow:hidden;">
-  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:700px;max-width:120vw;border-radius:50%;background:radial-gradient(circle,rgba(76,215,122,.08) 0%,transparent 62%);pointer-events:none;"></div>
-  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(76,215,122,.07) 0%,transparent 55%);pointer-events:none;"></div>
+<section id="program" style="background:var(--dark);padding:110px 0;position:relative;overflow:hidden;">
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:700px;max-width:120vw;border-radius:50%;background:radial-gradient(circle,rgba(var(--accent-rgb),.08) 0%,transparent 62%);pointer-events:none;"></div>
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(var(--accent-rgb),.07) 0%,transparent 55%);pointer-events:none;"></div>
 
   <div class="ctr" style="position:relative;z-index:1;text-align:center;">
     <div class="reveal">
@@ -442,9 +470,9 @@
 
       <div style="display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:14px 28px;margin-bottom:24px;">
         <span class="serif" style="font-size:clamp(20px,4vw,26px);color:rgba(255,255,255,.86);">15 nap</span>
-        <span style="width:4px;height:4px;border-radius:50%;background:rgba(76,215,122,.5);"></span>
+        <span style="width:4px;height:4px;border-radius:50%;background:rgba(var(--accent-rgb),.5);"></span>
         <span class="serif" style="font-size:clamp(20px,4vw,26px);color:rgba(255,255,255,.86);">Zárt csoport</span>
-        <span style="width:4px;height:4px;border-radius:50%;background:rgba(76,215,122,.5);"></span>
+        <span style="width:4px;height:4px;border-radius:50%;background:rgba(var(--accent-rgb),.5);"></span>
         <span class="serif" style="font-size:clamp(20px,4vw,26px);color:rgba(255,255,255,.86);">Korlátozott helyek</span>
       </div>
 
@@ -456,20 +484,20 @@
         <input type="email" required placeholder="A te e-mail-címed" aria-label="E-mail-cím"
           style="width:100%;padding:17px 22px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:100px;font-family:'DM Sans',sans-serif;font-size:15px;color:#fff;">
         <button type="submit"
-          style="width:100%;padding:17px 22px;background:#4cd77a;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:500;color:#0a1410;letter-spacing:.02em;transition:filter .2s, transform .2s;">Jelentkezem</button>
+          style="width:100%;padding:17px 22px;background:var(--accent);border-radius:100px;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:500;color:var(--dark);letter-spacing:.02em;transition:filter .2s, transform .2s;">Jelentkezem</button>
       </form>
       <p style="font-family:'DM Sans',sans-serif;font-size:12px;color:rgba(255,255,255,.34);margin-top:18px;letter-spacing:.04em;">A férőhelyek száma korlátozott.</p>
     </div>
 
-    <div id="apply-success" style="display:none;align-items:center;gap:14px;padding:20px 36px;background:rgba(76,215,122,.1);border:1px solid rgba(76,215,122,.28);border-radius:16px;margin:0 auto;max-width:max-content;">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="rgba(76,215,122,0.6)" stroke-width="1.5"/><path d="M6 10.2l2.6 2.6L14 7.4" stroke="#4cd77a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div id="apply-success" style="display:none;align-items:center;gap:14px;padding:20px 36px;background:rgba(var(--accent-rgb),.1);border:1px solid rgba(var(--accent-rgb),.28);border-radius:16px;margin:0 auto;max-width:max-content;">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="rgba(var(--accent-rgb),0.6)" stroke-width="1.5"/><path d="M6 10.2l2.6 2.6L14 7.4" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <span style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(255,255,255,.86);">Köszönjük! Hamarosan jelentkezünk nálad.</span>
     </div>
   </div>
 </section>
 
 <!-- ============ FOOTER ============ -->
-<footer style="background:#07100c;padding:54px 0;text-align:center;border-top:1px solid rgba(255,255,255,.06);">
+<footer style="background:var(--darker);padding:54px 0;text-align:center;border-top:1px solid rgba(255,255,255,.06);">
   <div class="ctr">
     <p class="serif" style="font-size:22px;font-weight:400;color:rgba(255,255,255,.78);letter-spacing:.04em;margin-bottom:8px;">Breath Body and Soul</p>
     <p style="font-family:'DM Sans',sans-serif;font-size:12px;font-weight:300;color:rgba(255,255,255,.32);line-height:1.7;">Légzés · Testmunka · Pszichodráma · Családállítás</p>
