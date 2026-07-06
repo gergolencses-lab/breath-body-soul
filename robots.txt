@@ -1,3 +1,5 @@
 # Élő: a keresők számára engedélyezett.
 User-agent: *
 Disallow:
+
+Sitemap: https://www.heldexperience.com/sitemap.xml
