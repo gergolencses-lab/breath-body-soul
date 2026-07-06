@@ -15,12 +15,14 @@ python3 -m http.server 8000
 
 ## Struktúra
 ```
-index.html        # egyoldalas főoldal (10 szekció)
-cikkek/           # cikk-oldalak (jelenleg placeholder szöveggel)
-assets/           # hero, folyó és portré képek
-robots.txt        # jelenleg noindex (pre-launch) — élesítéskor távolítsd el
+index.html        # egyoldalas főoldal
+adatkezeles.html  # GDPR adatkezelési tájékoztató (a jelentkezési űrlaphoz)
+assets/           # hero, folyó és portré képek + held.png logó
+robots.txt        # élő: keresők számára engedélyezett
+sitemap.xml       # homepage
 ```
 
 ## Állapot
-v1 — magyar nyelven. Nyitott: valódi testimonialok, program helyszín + dátum,
-app-store linkek, cikkek végleges szövege. Az EN szövegek készen állnak egy nyelvváltóhoz.
+v1 — magyar nyelven, élő ([heldexperience.com](https://www.heldexperience.com)). A jelentkezési űrlap
+Supabase-be menti az e-mail-címeket (anon kulcs + RLS insert-only). Nyitott: app-store linkek.
+Az EN szövegek készen állnak egy nyelvváltóhoz.
