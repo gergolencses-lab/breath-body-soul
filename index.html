@@ -127,9 +127,25 @@
   .intro-grid   { display:grid; grid-template-columns:1fr; gap:44px; }
   .layers-grid  { display:grid; grid-template-columns:1fr; gap:20px; }
   .audience-grid{ display:grid; grid-template-columns:1fr; gap:44px; }
-  .testi-grid   { display:flex; gap:20px; overflow-x:auto; padding-bottom:10px; scrollbar-width:none; scroll-snap-type:x mandatory; }
-  .testi-grid::-webkit-scrollbar { display:none; }
-  .testi-card   { width:300px; flex-shrink:0; }
+  /* ---- Testimonials peek carousel ---- */
+  .testi-carousel{ --card-w:min(78vw,360px); position:relative; display:flex; gap:16px; max-width:476px; margin-inline:auto; padding-block:10px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; -webkit-overflow-scrolling:touch; }
+  .testi-carousel::-webkit-scrollbar{ display:none; }
+  .testi-carousel::before, .testi-carousel::after{ content:''; flex:0 0 calc((100% - var(--card-w)) / 2); }
+  .testi-carousel:focus-visible{ outline:2px solid rgba(var(--accent-rgb),.6); outline-offset:4px; border-radius:22px; }
+  .testi-card{ flex:0 0 var(--card-w); scroll-snap-align:center; display:flex; flex-direction:column; background:#fffdf9; border:1px solid rgba(var(--ink-rgb),.08); border-radius:20px; overflow:hidden; box-shadow:0 2px 6px rgba(var(--ink-rgb),.05),0 20px 44px -26px rgba(var(--ink-rgb),.30); opacity:.5; transform:scale(.93); transition:opacity .5s cubic-bezier(.4,0,.2,1),transform .5s cubic-bezier(.4,0,.2,1),box-shadow .5s cubic-bezier(.4,0,.2,1); }
+  .testi-card.is-active{ opacity:1; transform:none; box-shadow:0 4px 10px rgba(var(--ink-rgb),.07),0 30px 60px -28px rgba(var(--ink-rgb),.42); }
+  .testi-img{ width:100%; height:auto; aspect-ratio:4/3; object-fit:cover; display:block; background:#e3ded6; }
+  .testi-body{ display:flex; flex-direction:column; flex:1; padding:26px 26px 24px; }
+  .testi-mark{ flex-shrink:0; margin-bottom:6px; }
+  .testi-quote{ font-family:'Cormorant Garamond',serif; font-size:19px; font-style:italic; color:var(--ink); line-height:1.6; flex:1; margin:6px 0 18px; }
+  .testi-by{ font-family:'DM Sans',sans-serif; font-size:12px; letter-spacing:.08em; color:var(--deep); padding-top:14px; border-top:1px solid rgba(var(--ink-rgb),.1); }
+  .testi-nav{ display:flex; align-items:center; justify-content:center; gap:16px; margin-top:30px; }
+  .testi-dots{ display:flex; gap:9px; }
+  .testi-dot{ width:8px; height:8px; border-radius:50%; background:rgba(var(--ink-rgb),.22); transition:background .3s,transform .3s; }
+  .testi-dot.is-on{ background:var(--deep); transform:scale(1.3); }
+  .testi-arrow{ width:40px; height:40px; border-radius:50%; border:1px solid rgba(var(--ink-rgb),.16); color:var(--ink); display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,.55); transition:background .25s,border-color .25s; }
+  .testi-arrow:hover{ background:#fff; border-color:rgba(var(--ink-rgb),.32); }
+  .testi-arrow:focus-visible{ outline:2px solid rgba(var(--accent-rgb),.6); outline-offset:2px; }
   .founders-grid{ display:grid; grid-template-columns:1fr; gap:32px; }
   .founder-row  { display:grid; grid-template-columns:1fr; gap:24px; align-items:center; }
   .f-photo      { border-radius:20px; overflow:hidden; aspect-ratio:4/5; background:#e3ded6; }
@@ -140,8 +156,6 @@
     .intro-grid    { grid-template-columns:1fr 1fr; gap:80px; }
     .layers-grid   { grid-template-columns:1fr 1fr; gap:26px; }
     .audience-grid { grid-template-columns:repeat(3,1fr); gap:40px; }
-    .testi-grid    { overflow-x:visible; display:grid; grid-template-columns:repeat(3,1fr); }
-    .testi-card    { width:auto; }
     .founders-grid { grid-template-columns:1fr 1fr; gap:48px; }
     .founder-row   { grid-template-columns:5fr 7fr; gap:56px; }
     .founder-row.rev .f-photo { order:2; }
@@ -175,6 +189,9 @@
     html{ scroll-behavior:auto; scroll-snap-type:none; }
     .metaphor-video{ display:none; }
     .parallax-inner{ top:0; height:100%; transform:none !important; }
+    .testi-carousel{ scroll-snap-type:none; }
+    .testi-card{ transition:none !important; }
+    .testi-section{ transition:none !important; }
   }
 </style>
 </head>
@@ -336,39 +353,61 @@
 </section>
 
 <!-- ============ AMIT MÁSOK MONDANAK ============ -->
-<section style="background:var(--dark);padding:100px 0;">
+<section class="testi-section" id="visszajelzesek" style="padding:100px 0;--testi-bg:rgb(225,229,222);background-color:var(--testi-bg);transition:background-color .7s cubic-bezier(.4,0,.2,1);">
   <div class="ctr">
-    <div style="margin-bottom:54px;" class="reveal">
-      <p class="eyebrow eyebrow-glow">Visszajelzések</p>
-      <h2 class="serif" style="font-size:clamp(38px,7vw,62px);font-weight:300;color:#fff;line-height:1.1;">Amit mások mondanak</h2>
+    <div style="margin-bottom:46px;text-align:center;" class="reveal">
+      <p class="eyebrow">Visszajelzések</p>
+      <h2 class="serif" style="font-size:clamp(38px,7vw,62px);font-weight:300;color:var(--ink);line-height:1.1;">Amit mások mondanak</h2>
     </div>
-    <div class="testi-grid">
-      <div class="glass testi-card" style="padding:34px;scroll-snap-align:start;display:flex;flex-direction:column;">
-        <svg width="26" height="20" viewBox="0 0 26 20" fill="none" style="margin-bottom:20px;flex-shrink:0;" aria-hidden="true"><path d="M0 20V11.5C0 5 3.6 1 9.4 0L10.6 3C7 3.8 5.2 5.8 5.2 9H9.6V20H0ZM15.4 20V11.5C15.4 5 19 1 24.8 0L26 3C22.4 3.8 20.6 5.8 20.6 9H25V20H15.4Z" fill="rgba(138,169,122,.55)"/></svg>
-        <p class="serif" style="font-size:20px;font-style:italic;color:rgba(255,255,255,.9);line-height:1.65;margin-bottom:22px;flex:1;">„Olyan, mintha lenne rajtam egy kapcsoló, amivel pillanatok alatt át tudok váltani nyugodt üzemmódba. Megváltoztatta az életemet.”</p>
-        <p style="font-family:'DM Sans',sans-serif;font-size:12px;letter-spacing:.06em;color:var(--accent);">Résztvevő</p>
-      </div>
-      <div class="glass testi-card" style="padding:34px;scroll-snap-align:start;display:flex;flex-direction:column;">
-        <svg width="26" height="20" viewBox="0 0 26 20" fill="none" style="margin-bottom:20px;flex-shrink:0;" aria-hidden="true"><path d="M0 20V11.5C0 5 3.6 1 9.4 0L10.6 3C7 3.8 5.2 5.8 5.2 9H9.6V20H0ZM15.4 20V11.5C15.4 5 19 1 24.8 0L26 3C22.4 3.8 20.6 5.8 20.6 9H25V20H15.4Z" fill="rgba(138,169,122,.55)"/></svg>
-        <p class="serif" style="font-size:20px;font-style:italic;color:rgba(255,255,255,.9);line-height:1.65;margin-bottom:22px;flex:1;">„Oda tud jutni, ahova a beszélgetős terápia nem nagyon. Hiába tudod, mi a traumád, ha közben nem éled meg — itt olyan dolgok is felszínre jönnek, amikről nem is tudtam.”</p>
-        <p style="font-family:'DM Sans',sans-serif;font-size:12px;letter-spacing:.06em;color:var(--accent);">Résztvevő</p>
-      </div>
-      <div class="glass testi-card" style="padding:34px;scroll-snap-align:start;display:flex;flex-direction:column;">
-        <svg width="26" height="20" viewBox="0 0 26 20" fill="none" style="margin-bottom:20px;flex-shrink:0;" aria-hidden="true"><path d="M0 20V11.5C0 5 3.6 1 9.4 0L10.6 3C7 3.8 5.2 5.8 5.2 9H9.6V20H0ZM15.4 20V11.5C15.4 5 19 1 24.8 0L26 3C22.4 3.8 20.6 5.8 20.6 9H25V20H15.4Z" fill="rgba(138,169,122,.55)"/></svg>
-        <p class="serif" style="font-size:20px;font-style:italic;color:rgba(255,255,255,.9);line-height:1.65;margin-bottom:22px;flex:1;">„Számomra mindig kritikus, kik azok a vezetők, akik mellett teljesen biztonságban érezhetem magam, amikor ismeretlen terepre lépek. Nagyon örültem, hogy ti indítottatok egy ilyen csoportot.”</p>
-        <p style="font-family:'DM Sans',sans-serif;font-size:12px;letter-spacing:.06em;color:var(--accent);">Résztvevő</p>
-      </div>
-      <div class="glass testi-card" style="padding:34px;scroll-snap-align:start;display:flex;flex-direction:column;">
-        <svg width="26" height="20" viewBox="0 0 26 20" fill="none" style="margin-bottom:20px;flex-shrink:0;" aria-hidden="true"><path d="M0 20V11.5C0 5 3.6 1 9.4 0L10.6 3C7 3.8 5.2 5.8 5.2 9H9.6V20H0ZM15.4 20V11.5C15.4 5 19 1 24.8 0L26 3C22.4 3.8 20.6 5.8 20.6 9H25V20H15.4Z" fill="rgba(138,169,122,.55)"/></svg>
-        <p class="serif" style="font-size:20px;font-style:italic;color:rgba(255,255,255,.9);line-height:1.65;margin-bottom:22px;flex:1;">„Testi feszültségek oldódtak fel bennem: az állkapcsom és a csípőm feszülése eltűnt, és azóta sem jött vissza. És felismertem, milyen bátor, erős és érzékeny vagyok.”</p>
-        <p style="font-family:'DM Sans',sans-serif;font-size:12px;letter-spacing:.06em;color:var(--accent);">Résztvevő</p>
-      </div>
-      <div class="glass testi-card" style="padding:34px;scroll-snap-align:start;display:flex;flex-direction:column;">
-        <svg width="26" height="20" viewBox="0 0 26 20" fill="none" style="margin-bottom:20px;flex-shrink:0;" aria-hidden="true"><path d="M0 20V11.5C0 5 3.6 1 9.4 0L10.6 3C7 3.8 5.2 5.8 5.2 9H9.6V20H0ZM15.4 20V11.5C15.4 5 19 1 24.8 0L26 3C22.4 3.8 20.6 5.8 20.6 9H25V20H15.4Z" fill="rgba(138,169,122,.55)"/></svg>
-        <p class="serif" style="font-size:20px;font-style:italic;color:rgba(255,255,255,.9);line-height:1.65;margin-bottom:22px;flex:1;">„Ha elengedem az irányítást és hagyom, hogy vigyen a folyamat, sokkal többet kaphatok, mint amit valaha el tudtam volna képzelni.”</p>
-        <p style="font-family:'DM Sans',sans-serif;font-size:12px;letter-spacing:.06em;color:var(--accent);">Résztvevő</p>
+  </div>
+
+  <div class="testi-carousel" role="group" aria-roledescription="karusszel" aria-label="Résztvevői visszajelzések" tabindex="0">
+    <div class="testi-card is-active" data-tint="225,229,222" style="--tint:225,229,222;" role="group" aria-roledescription="dia" aria-label="1 / 5">
+      <img class="testi-img" src="assets/testi-1.jpg" loading="lazy" decoding="async" width="880" height="660" alt="Ködbe burkolt tó és hegy hajnali fényben">
+      <div class="testi-body">
+        <svg class="testi-mark" width="26" height="20" viewBox="0 0 26 20" fill="none" aria-hidden="true"><path d="M0 20V11.5C0 5 3.6 1 9.4 0L10.6 3C7 3.8 5.2 5.8 5.2 9H9.6V20H0ZM15.4 20V11.5C15.4 5 19 1 24.8 0L26 3C22.4 3.8 20.6 5.8 20.6 9H25V20H15.4Z" fill="rgba(var(--accent-rgb),.5)"/></svg>
+        <p class="testi-quote">„Olyan, mintha lenne rajtam egy kapcsoló, amivel pillanatok alatt át tudok váltani nyugodt üzemmódba. Megváltoztatta az életemet.”</p>
+        <p class="testi-by">Résztvevő</p>
       </div>
     </div>
+    <div class="testi-card" data-tint="219,227,220" style="--tint:219,227,220;" role="group" aria-roledescription="dia" aria-label="2 / 5">
+      <img class="testi-img" src="assets/testi-2.jpg" loading="lazy" decoding="async" width="880" height="660" alt="Napsugarak törnek át a ködös erdőn">
+      <div class="testi-body">
+        <svg class="testi-mark" width="26" height="20" viewBox="0 0 26 20" fill="none" aria-hidden="true"><path d="M0 20V11.5C0 5 3.6 1 9.4 0L10.6 3C7 3.8 5.2 5.8 5.2 9H9.6V20H0ZM15.4 20V11.5C15.4 5 19 1 24.8 0L26 3C22.4 3.8 20.6 5.8 20.6 9H25V20H15.4Z" fill="rgba(var(--accent-rgb),.5)"/></svg>
+        <p class="testi-quote">„Oda tud jutni, ahova a beszélgetős terápia nem nagyon. Hiába tudod, mi a traumád, ha közben nem éled meg — itt olyan dolgok is felszínre jönnek, amikről nem is tudtam.”</p>
+        <p class="testi-by">Résztvevő</p>
+      </div>
+    </div>
+    <div class="testi-card" data-tint="235,227,216" style="--tint:235,227,216;" role="group" aria-roledescription="dia" aria-label="3 / 5">
+      <img class="testi-img" src="assets/testi-3.jpg" loading="lazy" decoding="async" width="880" height="660" alt="Két kéz gyengéden egymás felé nyúl">
+      <div class="testi-body">
+        <svg class="testi-mark" width="26" height="20" viewBox="0 0 26 20" fill="none" aria-hidden="true"><path d="M0 20V11.5C0 5 3.6 1 9.4 0L10.6 3C7 3.8 5.2 5.8 5.2 9H9.6V20H0ZM15.4 20V11.5C15.4 5 19 1 24.8 0L26 3C22.4 3.8 20.6 5.8 20.6 9H25V20H15.4Z" fill="rgba(var(--accent-rgb),.5)"/></svg>
+        <p class="testi-quote">„Számomra mindig kritikus, kik azok a vezetők, akik mellett teljesen biztonságban érezhetem magam, amikor ismeretlen terepre lépek. Nagyon örültem, hogy ti indítottatok egy ilyen csoportot.”</p>
+        <p class="testi-by">Résztvevő</p>
+      </div>
+    </div>
+    <div class="testi-card" data-tint="240,229,212" style="--tint:240,229,212;" role="group" aria-roledescription="dia" aria-label="4 / 5">
+      <img class="testi-img" src="assets/testi-4.jpg" loading="lazy" decoding="async" width="880" height="660" alt="Nő felemelt karral az aranyló naplementében">
+      <div class="testi-body">
+        <svg class="testi-mark" width="26" height="20" viewBox="0 0 26 20" fill="none" aria-hidden="true"><path d="M0 20V11.5C0 5 3.6 1 9.4 0L10.6 3C7 3.8 5.2 5.8 5.2 9H9.6V20H0ZM15.4 20V11.5C15.4 5 19 1 24.8 0L26 3C22.4 3.8 20.6 5.8 20.6 9H25V20H15.4Z" fill="rgba(var(--accent-rgb),.5)"/></svg>
+        <p class="testi-quote">„Testi feszültségek oldódtak fel bennem: az állkapcsom és a csípőm feszülése eltűnt, és azóta sem jött vissza. És felismertem, milyen bátor, erős és érzékeny vagyok.”</p>
+        <p class="testi-by">Résztvevő</p>
+      </div>
+    </div>
+    <div class="testi-card" data-tint="219,228,231" style="--tint:219,228,231;" role="group" aria-roledescription="dia" aria-label="5 / 5">
+      <img class="testi-img" src="assets/testi-5.jpg" loading="lazy" decoding="async" width="880" height="660" alt="Csendes víztükör lágy fodrokkal">
+      <div class="testi-body">
+        <svg class="testi-mark" width="26" height="20" viewBox="0 0 26 20" fill="none" aria-hidden="true"><path d="M0 20V11.5C0 5 3.6 1 9.4 0L10.6 3C7 3.8 5.2 5.8 5.2 9H9.6V20H0ZM15.4 20V11.5C15.4 5 19 1 24.8 0L26 3C22.4 3.8 20.6 5.8 20.6 9H25V20H15.4Z" fill="rgba(var(--accent-rgb),.5)"/></svg>
+        <p class="testi-quote">„Ha elengedem az irányítást és hagyom, hogy vigyen a folyamat, sokkal többet kaphatok, mint amit valaha el tudtam volna képzelni.”</p>
+        <p class="testi-by">Résztvevő</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="testi-nav">
+    <button type="button" class="testi-arrow prev" aria-label="Előző visszajelzés"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <div class="testi-dots" role="tablist" aria-label="Visszajelzés választó"><button type="button" class="testi-dot is-on" aria-current="true" aria-label="1. visszajelzés"></button><button type="button" class="testi-dot" aria-label="2. visszajelzés"></button><button type="button" class="testi-dot" aria-label="3. visszajelzés"></button><button type="button" class="testi-dot" aria-label="4. visszajelzés"></button><button type="button" class="testi-dot" aria-label="5. visszajelzés"></button></div>
+    <button type="button" class="testi-arrow next" aria-label="Következő visszajelzés"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   </div>
 </section>
 
@@ -618,6 +657,51 @@
     window.addEventListener('scroll', onScroll, {passive:true});
     window.addEventListener('resize', onScroll, {passive:true});
     update();
+  })();
+
+  // Testimonials peek-carousel: nearest-center active detection + tint shift + nav
+  (function(){
+    var carousel = document.querySelector('.testi-carousel');
+    if(!carousel) return;
+    var section = carousel.closest('section');
+    var cards   = [].slice.call(carousel.querySelectorAll('.testi-card'));
+    if(!cards.length) return;
+    var dots    = [].slice.call(document.querySelectorAll('.testi-dot'));
+    var prevBtn = document.querySelector('.testi-arrow.prev');
+    var nextBtn = document.querySelector('.testi-arrow.next');
+    var RM = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    var raf = window.requestAnimationFrame || function(f){ return setTimeout(f,16); };
+    var current = -1, ticking = false;
+    function tintOf(card){ var t=card.getAttribute('data-tint'); if(t) return t.trim(); return (getComputedStyle(card).getPropertyValue('--tint')||'').trim(); }
+    function setActive(i){
+      if(i===current || i<0 || i>=cards.length) return;
+      current = i;
+      cards.forEach(function(c,idx){ c.classList.toggle('is-active', idx===i); });
+      dots.forEach(function(d,idx){ var on=idx===i; d.classList.toggle('is-on',on); if(on){ d.setAttribute('aria-current','true'); } else { d.removeAttribute('aria-current'); } });
+      var tint=tintOf(cards[i]); if(tint && section){ section.style.setProperty('--testi-bg','rgb('+tint+')'); }
+    }
+    function nearestIndex(){
+      var box=carousel.getBoundingClientRect(); var mid=box.left+box.width/2; var best=0,bestD=Infinity;
+      for(var i=0;i<cards.length;i++){ var r=cards[i].getBoundingClientRect(); var d=Math.abs((r.left+r.width/2)-mid); if(d<bestD){ bestD=d; best=i; } }
+      return best;
+    }
+    function onScroll(){ if(ticking) return; ticking=true; raf(function(){ setActive(nearestIndex()); ticking=false; }); }
+    function scrollToIndex(i){
+      i=Math.max(0,Math.min(cards.length-1,i)); var card=cards[i];
+      var target=card.offsetLeft-(carousel.clientWidth-card.clientWidth)/2;
+      if(carousel.scrollTo){ carousel.scrollTo({ left:target, behavior:RM?'auto':'smooth' }); } else { carousel.scrollLeft=target; }
+    }
+    function stepBy(delta){ scrollToIndex((current<0?nearestIndex():current)+delta); }
+    carousel.addEventListener('scroll', onScroll, { passive:true });
+    window.addEventListener('resize', onScroll, { passive:true });
+    if(prevBtn) prevBtn.addEventListener('click', function(){ stepBy(-1); });
+    if(nextBtn) nextBtn.addEventListener('click', function(){ stepBy(1); });
+    dots.forEach(function(d,idx){ d.addEventListener('click', function(){ scrollToIndex(idx); }); });
+    carousel.addEventListener('keydown', function(e){
+      if(e.key==='ArrowRight'||e.keyCode===39){ e.preventDefault(); stepBy(1); }
+      else if(e.key==='ArrowLeft'||e.keyCode===37){ e.preventDefault(); stepBy(-1); }
+    });
+    setActive(nearestIndex());
   })();
 </script>
 <!-- Vercel Web Analytics -->
