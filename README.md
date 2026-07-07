@@ -1,4 +1,4 @@
-# Breath Body and Soul
+# HELD Experience
 
 Integrált terápiás csoportprogram weboldala — **légzés · testmunka · pszichodráma · családállítás**.
 Alapítók: Generál Péter & Fáy Viktória.
