@@ -166,6 +166,27 @@
 
   .cta-pill { display:block; width:100%; max-width:440px; padding:18px 24px; background:var(--ink); border-radius:100px; font-family:'DM Sans',sans-serif; font-size:16px; color:#fff; text-decoration:none; text-align:center; letter-spacing:.03em; transition:background .25s, transform .25s; }
   .cta-pill:hover { background:#24412e; transform:translateY(-2px); }
+
+  /* Regisztrációs CTA — a program-szekcióban, a Google-űrlapra vezet */
+  .cta-apply { display:flex; align-items:center; justify-content:center; gap:12px; width:100%; padding:19px 24px; background:var(--accent); border-radius:100px; font-family:'DM Sans',sans-serif; font-size:17px; font-weight:500; color:var(--dark); letter-spacing:.02em; text-decoration:none; transition:filter .25s, transform .25s; }
+  .cta-apply:hover { filter:brightness(1.07); transform:translateY(-2px); }
+  .cta-apply:focus-visible { outline:2px solid #fff; outline-offset:3px; }
+
+  /* Sticky CTA — mobilon/tableten, a görgetés harmada után, a program-szekcióban elrejtve */
+  .sticky-cta { position:fixed; left:50%; bottom:calc(18px + env(safe-area-inset-bottom)); z-index:60; display:flex; align-items:center; gap:10px; padding:15px 28px; background:var(--accent); border-radius:100px; font-family:'DM Sans',sans-serif; font-size:15px; font-weight:500; color:var(--dark); letter-spacing:.02em; text-decoration:none; white-space:nowrap; box-shadow:0 12px 32px -10px rgba(0,0,0,.5), 0 3px 10px -4px rgba(0,0,0,.35); opacity:0; pointer-events:none; transform:translate(-50%,150%); transition:transform .55s cubic-bezier(.16,1,.3,1), opacity .3s ease; }
+  .sticky-cta.show { opacity:1; pointer-events:auto; transform:translate(-50%,0); }
+  .sticky-cta:focus-visible { outline:2px solid #fff; outline-offset:3px; }
+  @media (min-width:901px){ .sticky-cta { display:none; } }
+
+  /* Program-tények: helyszín + részvételi díj */
+  .program-facts { display:grid; grid-template-columns:1fr; gap:26px; max-width:560px; margin:0 auto 46px; padding-top:28px; border-top:1px solid rgba(255,255,255,.1); text-align:left; }
+  @media (min-width:640px){ .program-facts { grid-template-columns:1fr 1fr; gap:36px; } }
+
+  /* Program-chipek: keskeny képernyőn egymás alatt, elválasztó pont nélkül (nem marad árva pont a sorvégen) */
+  @media (max-width:559px){
+    .program-chips { flex-direction:column; gap:6px !important; }
+    .program-chips .chip-sep { display:none; }
+  }
   .cta-green { display:inline-block; padding:16px 40px; background:rgba(var(--accent-rgb),.13); border:1px solid rgba(var(--accent-rgb),.44); border-radius:100px; font-family:'DM Sans',sans-serif; font-size:15px; color:var(--accent); text-decoration:none; letter-spacing:.04em; transition:background .25s, border-color .25s; }
   .cta-green:hover { background:rgba(var(--accent-rgb),.24); border-color:rgba(var(--accent-rgb),.7); }
   .tag { padding:6px 14px; border-radius:100px; border:1px solid rgba(var(--accent-rgb),.24); font-family:'DM Sans',sans-serif; font-size:12px; color:rgba(var(--accent-rgb),.72); }
@@ -192,6 +213,7 @@
     .testi-carousel{ scroll-snap-type:none; }
     .testi-card{ transition:none !important; }
     .testi-section{ transition:none !important; }
+    .sticky-cta{ transition:opacity .01s !important; transform:translate(-50%,0) !important; }
   }
 </style>
 </head>
@@ -206,7 +228,7 @@
   <div class="hero-body" style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:0 28px 44px;text-align:center;">
     <h1 class="hero-word">HELD</h1>
     <div style="width:100%;max-width:480px;">
-      <p style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:300;color:rgba(var(--ink-rgb),.56);line-height:1.7;margin:0;">Integrált terápiás csoportprogram légzéssel, testmunkával, pszichodrámával és transzgenerációs munkával.</p>
+      <p style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:300;color:rgba(var(--ink-rgb),.78);line-height:1.7;margin:0;">Bő egy éves, zárt önismereti folyamat — légzéssel, testmunkával, pszichodrámával és családállítással.</p>
     </div>
     <a href="#program" class="cta-pill" style="margin-top:30px;">Érdekel →</a>
   </div>
@@ -432,7 +454,7 @@
         <div class="f-photo"><img src="assets/peter.jpg" alt="Generál Péter portré" style="object-position:center 28%;"></div>
         <div class="f-text">
           <h3 class="serif" style="font-size:clamp(28px,4vw,38px);font-weight:400;color:var(--ink);margin-bottom:6px;">Generál Péter</h3>
-          <p style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:var(--deep);margin-bottom:22px;">MCC coach · Kiképző pszichodráma-vezető · Krízisterapeuta</p>
+          <p style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:var(--deep);margin-bottom:22px;">MCC coach · Kiképző pszichodráma-vezető · AoB breathwork facilitátor</p>
           <p style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:300;color:rgba(var(--ink-rgb),.74);line-height:1.82;margin-bottom:18px;">Péter azt mondja, akkor a leghasznosabb, ha igazán nagy a baj. Nem kicsit nagy. Igazán nagy. Ez vagy szokatlan személyes márka, vagy pontos önismeret — negyven év után a kettő nagyjából ugyanúgy néz ki.</p>
           <p style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:300;color:rgba(var(--ink-rgb),.74);line-height:1.82;">Közgazdászként kezdett. Aztán vezető, tréner. Az a fordulat, ami mindent átrendezett, személyes volt — nyíltan beszél róla: a válása. Azóta foglalkoztatja egy kérdés: <strong style="font-weight:500;color:var(--ink);">mi segít abban, hogy valaki önmaga lehessen?</strong> A keresés elvitte Marshall Rosenberghez és az Erőszakmentes Kommunikációhoz, pszichodráma-képzésre, az Alchemy of Breath facilitátori programjába. Ma MCC-minősítésű coach, kiképző pszichodráma-vezető, krízisterapeuta. Csoportokban dolgozik, légzéssel — és azzal az egészen konkrét drámával, ami egy szobában akkor zajlik, amikor az emberek abbahagyják a teljesítmény hajszolását, leveszik a külvilágnak felvett álarcot, és megmutatják magukat.</p>
         </div>
@@ -443,7 +465,7 @@
         <div class="f-photo"><img src="assets/viki.jpg" alt="Fáy Viktória portré" style="object-position:center 25%;"></div>
         <div class="f-text">
           <h3 class="serif" style="font-size:clamp(28px,4vw,38px);font-weight:400;color:var(--ink);margin-bottom:6px;">Fáy Viktória</h3>
-          <p style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:var(--deep);margin-bottom:22px;">Pszichológus · Pszichodráma-vezető · Breathwork facilitátor</p>
+          <p style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:var(--deep);margin-bottom:22px;">Pszichológus, PCC · Pszichodráma-vezető · BBTRS breathwork facilitátor</p>
           <p style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:300;color:rgba(var(--ink-rgb),.74);line-height:1.82;margin-bottom:18px;">Pszichológusként végeztem, és több mint tíz éve kísérek embereket egyéni és csoportos folyamatokban. Emellett ugyanennyi ideje dolgozom szervezetfejlesztési területen coachként, coachképzőként és trénerként. Két kislány édesanyjaként a mindennapokban is megtapasztalom, mennyire fontos a kapcsolódás, a rugalmasság és a folyamatos fejlődés.</p>
           <p style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:300;color:rgba(var(--ink-rgb),.74);line-height:1.82;margin-bottom:18px;">Pszichodráma-vezetőként hiszek a csoport megtartó erejében, az „itt és most” erejében, valamint a test bölcsességében. Számomra a jelenlét azt jelenti, hogy figyelünk a testünk jelzéseire, és teret adunk annak, ami éppen megszületni szeretne bennünk.</p>
           <p style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:300;color:rgba(var(--ink-rgb),.74);line-height:1.82;margin-bottom:18px;">Az évek során számos testfókuszú módszert tanultam. Breathwork facilitátorként (BBTRS) a légzéssel való munka új perspektívát nyitott számomra a trauma és a gyógyulás megértésében. Azóta a légzés a csoportjaimnak és az egyéni munkámnak is fontos része.</p>
@@ -524,49 +546,58 @@
       <p class="eyebrow eyebrow-glow">Program &amp; jelentkezés</p>
       <h2 class="serif" style="font-size:clamp(40px,9vw,72px);font-weight:300;color:#fff;line-height:1.08;margin-bottom:22px;">Légy az elsők között</h2>
 
-      <div style="display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:14px 28px;margin-bottom:24px;">
-        <span class="serif" style="font-size:clamp(20px,4vw,26px);color:rgba(255,255,255,.86);">10 alkalom</span>
-        <span style="width:4px;height:4px;border-radius:50%;background:rgba(var(--accent-rgb),.5);"></span>
+      <div class="program-chips" style="display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:14px 28px;margin-bottom:24px;">
+        <span class="serif" style="font-size:clamp(20px,4vw,26px);color:rgba(255,255,255,.86);">Bő egy éves folyamat</span>
+        <span class="chip-sep" style="width:4px;height:4px;border-radius:50%;background:rgba(var(--accent-rgb),.5);"></span>
+        <span class="serif" style="font-size:clamp(20px,4vw,26px);color:rgba(255,255,255,.86);">13 alkalom, 15 nap</span>
+        <span class="chip-sep" style="width:4px;height:4px;border-radius:50%;background:rgba(var(--accent-rgb),.5);"></span>
         <span class="serif" style="font-size:clamp(20px,4vw,26px);color:rgba(255,255,255,.86);">Zárt csoport</span>
-        <span style="width:4px;height:4px;border-radius:50%;background:rgba(var(--accent-rgb),.5);"></span>
-        <span class="serif" style="font-size:clamp(20px,4vw,26px);color:rgba(255,255,255,.86);">Korlátozott helyek</span>
       </div>
 
-      <div style="margin-bottom:48px;">
-        <p style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:20px;">Időpontok — 2026</p>
-        <div style="display:inline-flex;flex-direction:column;gap:12px;text-align:left;margin:0 auto;">
-          <div style="display:flex;align-items:baseline;gap:14px;"><span style="width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;position:relative;top:-2px;"></span><span class="serif" style="font-size:clamp(19px,3.4vw,24px);color:#fff;">2026. október 10–11.</span><span style="font-family:'DM Sans',sans-serif;font-size:12px;color:rgba(255,255,255,.4);">szombat–vasárnap</span></div>
-          <div style="display:flex;align-items:baseline;gap:14px;"><span style="width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;position:relative;top:-2px;"></span><span class="serif" style="font-size:clamp(19px,3.4vw,24px);color:#fff;">2026. november 14.</span><span style="font-family:'DM Sans',sans-serif;font-size:12px;color:rgba(255,255,255,.4);">szombat</span></div>
-          <div style="display:flex;align-items:baseline;gap:14px;"><span style="width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;position:relative;top:-2px;"></span><span class="serif" style="font-size:clamp(19px,3.4vw,24px);color:#fff;">2026. december 12.</span><span style="font-family:'DM Sans',sans-serif;font-size:12px;color:rgba(255,255,255,.4);">szombat</span></div>
+      <div style="max-width:560px;margin:0 auto 40px;text-align:left;">
+        <p style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.62);margin-bottom:22px;">Időpontok</p>
+        <div style="display:flex;flex-direction:column;gap:18px;">
+          <div style="display:flex;align-items:baseline;gap:16px;">
+            <span class="serif" style="font-size:22px;color:var(--accent);flex-shrink:0;width:52px;">2026</span>
+            <p style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:300;color:rgba(255,255,255,.88);line-height:1.75;margin:0;">okt. 10–11. · nov. 14. · dec. 12.</p>
+          </div>
+          <div style="display:flex;align-items:baseline;gap:16px;">
+            <span class="serif" style="font-size:22px;color:var(--accent);flex-shrink:0;width:52px;">2027</span>
+            <p style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:300;color:rgba(255,255,255,.88);line-height:1.75;margin:0;">jan. 23. · febr. 13. · márc. 20. · ápr. 17. · máj. 22. · jún. 19. · szept. 18. · okt. 16. · nov. 13. · dec. 11–12.</p>
+          </div>
         </div>
-        <p style="font-family:'DM Sans',sans-serif;font-size:14px;color:rgba(255,255,255,.62);margin-top:22px;letter-spacing:.02em;">Helyszín: <span style="color:#fff;">Budapest, Magnet Ház</span></p>
-        <p style="font-family:'DM Sans',sans-serif;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-top:10px;">2027-es időpontok hamarosan</p>
+      </div>
+
+      <div class="program-facts">
+        <div>
+          <p style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.62);margin-bottom:10px;">Helyszín</p>
+          <p class="serif" style="font-size:20px;color:#fff;line-height:1.4;margin:0;">Magnet Közösségi Ház</p>
+          <p style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:300;color:rgba(255,255,255,.66);margin-top:4px;">Budapest</p>
+        </div>
+        <div>
+          <p style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.62);margin-bottom:10px;">Részvételi díj</p>
+          <p class="serif" style="font-size:20px;color:#fff;line-height:1.4;margin:0;">45.000 Ft <span style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:300;color:rgba(255,255,255,.72);">/ nap</span></p>
+          <p style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:300;color:rgba(255,255,255,.66);margin-top:4px;">A teljes folyamat 15 nap</p>
+        </div>
       </div>
     </div>
 
-    <div class="reveal d1" id="apply-wrap" style="max-width:440px;margin:0 auto;">
-      <form id="apply-form" style="display:flex;flex-direction:column;gap:14px;">
-        <input type="text" name="company" id="apply-hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;">
-        <input type="email" required placeholder="A te e-mail-címed" aria-label="E-mail-cím"
-          style="width:100%;padding:17px 22px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:100px;font-family:'DM Sans',sans-serif;font-size:15px;color:#fff;">
-        <label style="display:flex;align-items:flex-start;gap:10px;text-align:left;font-family:'DM Sans',sans-serif;font-size:12.5px;font-weight:300;color:rgba(255,255,255,.6);line-height:1.55;cursor:pointer;">
-          <input type="checkbox" required name="consent" id="apply-consent" style="margin-top:2px;width:16px;height:16px;flex-shrink:0;accent-color:var(--accent);cursor:pointer;">
-          <span>Hozzájárulok, hogy a megadott e-mail-címemet a jelentkezés és kapcsolattartás céljából kezeljék. Részletek az <a href="adatkezeles.html" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline;text-underline-offset:2px;">Adatkezelési tájékoztatóban</a>.</span>
-        </label>
-        <button type="submit"
-          style="width:100%;padding:17px 22px;background:var(--accent);border-radius:100px;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:500;color:var(--dark);letter-spacing:.02em;transition:filter .2s, transform .2s;">Jelentkezem</button>
-      </form>
-      <p style="font-family:'DM Sans',sans-serif;font-size:12px;color:rgba(255,255,255,.34);margin-top:18px;letter-spacing:.04em;">A férőhelyek száma korlátozott.</p>
-    </div>
-
-    <p id="apply-error" role="alert" style="display:none;font-family:'DM Sans',sans-serif;font-size:13px;color:#ff9b8a;margin-top:14px;letter-spacing:.02em;max-width:440px;margin-left:auto;margin-right:auto;">Valami hiba történt.</p>
-
-    <div id="apply-success" style="display:none;align-items:center;gap:14px;padding:20px 36px;background:rgba(var(--accent-rgb),.1);border:1px solid rgba(var(--accent-rgb),.28);border-radius:16px;margin:0 auto;max-width:max-content;">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="rgba(var(--accent-rgb),0.6)" stroke-width="1.5"/><path d="M6 10.2l2.6 2.6L14 7.4" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <span style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(255,255,255,.86);">Köszönjük! Hamarosan jelentkezünk nálad.</span>
+    <div class="reveal d1" style="max-width:440px;margin:0 auto;">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScfDwVy1llrOTxYQ1oOCU7JPSrmgfQKkK5LpPmk-z82lYsnKA/viewform" target="_blank" rel="noopener" class="cta-apply">
+        Regisztrálok
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6.2 3h6.8v6.8M13 3L3 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <p style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:300;color:rgba(255,255,255,.66);margin-top:18px;line-height:1.6;letter-spacing:.02em;text-wrap:balance;">A regisztrációs adatlap új lapon nyílik meg. A férőhelyek száma korlátozott.</p>
+      <p style="font-family:'DM Sans',sans-serif;font-size:12.5px;font-weight:300;color:rgba(255,255,255,.62);margin-top:10px;line-height:1.6;text-wrap:balance;">Az adatkezelésről az <a href="adatkezeles.html" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline;text-underline-offset:2px;">Adatkezelési tájékoztatóban</a> olvashatsz.</p>
     </div>
   </div>
 </section>
+
+<!-- ============ STICKY CTA (mobil) ============ -->
+<a href="https://docs.google.com/forms/d/e/1FAIpQLScfDwVy1llrOTxYQ1oOCU7JPSrmgfQKkK5LpPmk-z82lYsnKA/viewform" target="_blank" rel="noopener" id="sticky-cta" class="sticky-cta" aria-label="Regisztrálok — a jelentkezési adatlap új lapon nyílik meg">
+  Regisztrálok
+  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6.2 3h6.8v6.8M13 3L3 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</a>
 
 <!-- ============ FOOTER ============ -->
 <footer style="background:var(--darker);padding:54px 0;text-align:center;border-top:1px solid rgba(255,255,255,.06);">
@@ -589,49 +620,28 @@
     els.forEach(function(e){ io.observe(e); });
   })();
 
-  // Application form — Supabase (insert-only via anon key + RLS)
+  // Sticky CTA — a görgetés harmada után jelenik meg, a program-szekcióban elrejtve (ott már ott a nagy gomb)
   (function(){
-    var SUPABASE_URL = 'https://efxakbcdkcxwticonopm.supabase.co';   // <- cseréld a Supabase projekt URL-re
-    var SUPABASE_ANON_KEY = 'sb_publishable_DiEsJhT2yrlBrVd8D4jkGw_qQ8lLZ8T';          // <- publikus anon kulcs (biztonságos a kliensben)
-    var form = document.getElementById('apply-form');
-    if(!form) return;
-    var wrap = document.getElementById('apply-wrap'),
-        success = document.getElementById('apply-success'),
-        errBox = document.getElementById('apply-error'),
-        btn = form.querySelector('button[type="submit"]'),
-        emailEl = form.querySelector('input[type="email"]'),
-        hpEl = document.getElementById('apply-hp'),
-        btnLabel = btn ? btn.textContent : 'Jelentkezem';
-    function showError(m){ if(errBox){ errBox.textContent = m; errBox.style.display = 'block'; } }
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
-      if(errBox) errBox.style.display = 'none';
-      if(hpEl && hpEl.value){ wrap.style.display='none'; success.style.display='inline-flex'; return; }
-      var email = (emailEl.value || '').trim();
-      if(!emailEl.checkValidity() || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){
-        showError('Kérlek, adj meg egy érvényes e-mail-címet.'); return;
-      }
-      if(SUPABASE_URL.indexOf('YOUR-PROJECT') !== -1){ wrap.style.display='none'; success.style.display='inline-flex'; return; } // amíg nincs valós Supabase kulcs: csak visszaigazol, nem küld
-      btn.disabled = true; btn.style.opacity = '.6'; btn.style.cursor = 'default'; btn.textContent = 'Küldés…';
-      fetch(SUPABASE_URL + '/rest/v1/signups', {
-        method: 'POST',
-        headers: {
-          'apikey': SUPABASE_ANON_KEY,
-          'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
-          'Content-Type': 'application/json',
-          'Prefer': 'return=minimal'
-        },
-        body: JSON.stringify({ email: email, consent: true, source: 'index-apply' })
-      })
-      .then(function(res){
-        if(res.ok || res.status === 409){ wrap.style.display='none'; success.style.display='inline-flex'; }
-        else { throw new Error('HTTP ' + res.status); }
-      })
-      .catch(function(){
-        showError('Valami hiba történt a küldés során. Kérlek, próbáld újra, vagy írj nekünk e-mailben.');
-        btn.disabled = false; btn.style.opacity = ''; btn.style.cursor = 'pointer'; btn.textContent = btnLabel;
-      });
-    });
+    var el = document.getElementById('sticky-cta'),
+        program = document.getElementById('program');
+    if(!el) return;
+    var programVisible = false, ticking = false, io = null;
+    function update(){
+      ticking = false;
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      var past = max > 0 && ((window.scrollY || window.pageYOffset) / max) > 0.33;
+      el.classList.toggle('show', past && !programVisible);
+    }
+    if (program && 'IntersectionObserver' in window) {
+      io = new IntersectionObserver(function(entries){
+        programVisible = entries[0].isIntersecting;
+        update();
+      }, { threshold:0.12 });
+      io.observe(program);
+    }
+    window.addEventListener('scroll', function(){ if(!ticking){ ticking = true; requestAnimationFrame(update); } }, { passive:true });
+    window.addEventListener('resize', update);
+    update();
   })();
 
   // Parallax image bands — image scrolls slower than the page (off for reduced motion)
